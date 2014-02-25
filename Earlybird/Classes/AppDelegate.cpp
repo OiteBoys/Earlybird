@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "AtlasLoader.h"
 
 USING_NS_CC;
 
@@ -17,12 +18,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto eglView = EGLView::getInstance();
 
     director->setOpenGLView(eglView);
+
+	// set the resource directory
+	this->setResourceSearchResolution();
+
+	AtlasLoader::getInstance();
 	
     // turn on display FPS
     director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
+
+
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
@@ -48,3 +56,14 @@ void AppDelegate::applicationWillEnterForeground() {
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }
+
+void AppDelegate::setResourceSearchResolution()
+{
+    std::vector<std::string> paths;
+	paths.push_back("fonts");
+    paths.push_back("image");
+    paths.push_back("sounds");
+    FileUtils::getInstance()->setSearchResolutionsOrder(paths);
+}
+
+
