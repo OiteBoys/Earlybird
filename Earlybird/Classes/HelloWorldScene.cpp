@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "AtlasLoader.h"
 
 USING_NS_CC;
 
@@ -48,29 +49,18 @@ bool HelloWorld::init()
     menu->setPosition(Point::ZERO);
     this->addChild(menu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
+	// here is the sample to use AtlasLoader
+	Sprite *bird = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("bird0_0"));
+	bird->setPosition(Point(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height/2));
 
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Point(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+	Animation *animation = Animation::create();
+	animation->setDelayPerUnit(0.08f);
+	animation->addSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("bird0_1"));
+	animation->addSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("bird0_2"));
+	Animate *animate = Animate::create(animation);
+	bird->runAction(RepeatForever::create(animate));
+	this->addChild(bird);
     
     return true;
 }

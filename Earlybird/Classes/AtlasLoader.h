@@ -56,7 +56,7 @@ protected:
     AtlasLoader();
     
     /**
-     *  Initializes the instance of FileUtils. It will set _searchPathArray and _searchResolutionsOrderArray to default values.
+     *  Initializes the instance of AtlasLoader. 
      *
      *  @note When you are porting Cocos2d-x to a new platform, you may need to take care of this method.
      *        You could assign a default value to _defaultResRootPath in the subclass of FileUtils(e.g. FileUtilsAndroid). Then invoke the FileUtils::init().

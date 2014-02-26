@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "AtlasLoader.h"
+#include "LoadingScene.h"
 
 USING_NS_CC;
 
@@ -18,12 +18,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto eglView = EGLView::getInstance();
 
     director->setOpenGLView(eglView);
+	eglView->setDesignResolutionSize(640,1136, ResolutionPolicy::SHOW_ALL);
 
 	// set the resource directory
 	this->setResourceSearchResolution();
-
-	AtlasLoader::getInstance()->loadAtlas("atlas.txt");
-	SpriteFrame *bg_day = AtlasLoader::getInstance()->getSpriteFrameByName("bg_day");
 	
     // turn on display FPS
     director->setDisplayStats(true);
@@ -34,7 +32,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = LoadingScene::create();
 
     // run
     director->runWithScene(scene);
