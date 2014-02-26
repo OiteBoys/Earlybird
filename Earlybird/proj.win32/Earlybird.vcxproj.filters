@@ -27,7 +27,7 @@
     <ClCompile Include="..\Classes\GameScene.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\AtlasLoader.cpp">
+    <ClCompile Include="AtlasLoader.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>

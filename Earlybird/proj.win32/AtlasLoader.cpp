@@ -1,5 +1,6 @@
 #include "AtlasLoader.h"
 
+
 AtlasLoader* AtlasLoader::sharedAtlasLoader = nullptr;
 
 AtlasLoader* AtlasLoader::getInstance(){
@@ -24,12 +25,16 @@ AtlasLoader::AtlasLoader(){}
 
 
 bool AtlasLoader::init(){
-	this->atlases = new vector<Atlas>(71);
 	return true;
 }
 
-void AtlasLoader::loadAtlas(){
-	string data = FileUtils::getInstance()->getStringFromFile("atlas.txt");
+void AtlasLoader::loadAtlas(string filename){
+	auto textureAtlas = Director::getInstance()->getTextureCache()->addImage("atlas.png");
+	this->loadAtlas(filename, textureAtlas);
+}
+
+void AtlasLoader::loadAtlas(string filename, Texture2D *texture) {
+	string data = FileUtils::getInstance()->getStringFromFile(filename);
 	unsigned pos;Atlas atlas;
 	pos = data.find_first_of("\n");
 	string line = data.substr(0, pos);
@@ -42,23 +47,18 @@ void AtlasLoader::loadAtlas(){
 		atlas.start.y = 1024*atlas.start.y;
 		atlas.end.x = 1024*atlas.end.x;
 		atlas.end.y = 1024*atlas.end.y;
-		this->atlases.push_back(atlas);
 
 		pos = data.find_first_of("\n");
 		line = data.substr(0, pos);
 		data = data.substr(pos + 1);
+
+		// use the data to create a sprite frame
+		Rect rect = Rect(atlas.start.x, atlas.start.y, atlas.width, atlas.height);
+		auto frame = SpriteFrame::createWithTexture(texture, rect);
+		this->_spriteFrames.insert(string(atlas.name), frame);
 	}
 }
 
 SpriteFrame* AtlasLoader::getSpriteFrameByName(string name){
-	for (auto atlas : atlases){
-		if(name == atlas.name) {
-			//auto textureAtlas = Director::getInstance()->getTextureCache()->getTextureForKey("atlas.png");
-			auto textureAtlas = Director::getInstance()->getTextureCache()->addImage("atlas.png");
-			Rect rect = Rect(atlas.start.x, atlas.start.y, atlas.width, atlas.height);
-			auto frame = SpriteFrame::createWithTexture(textureAtlas, rect);
-			return frame;
-		}
-	}
-	return nullptr;
+	return this->_spriteFrames.at(name);
 }

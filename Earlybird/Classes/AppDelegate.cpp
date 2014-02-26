@@ -22,7 +22,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// set the resource directory
 	this->setResourceSearchResolution();
 
-	AtlasLoader::getInstance();
+	AtlasLoader::getInstance()->loadAtlas("atlas.txt");
+	SpriteFrame *bg_day = AtlasLoader::getInstance()->getSpriteFrameByName("bg_day");
 	
     // turn on display FPS
     director->setDisplayStats(true);
