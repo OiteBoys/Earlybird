@@ -1,5 +1,4 @@
 #include "LoadingScene.h"
-
 LoadingScene::LoadingScene(){}
 
 LoadingScene::~LoadingScene(){}
@@ -34,7 +33,8 @@ void LoadingScene::loadingCallBack(Texture2D *texture){
 	SimpleAudioEngine::getInstance()->preloadEffect("sfx_wing.ogg");
 
 	// After load all the things, change the scene to new one
-	auto scene = HelloWorld::createScene();
+	//auto scene = HelloWorld::createScene();
+	auto scene = WelcomeScene::create();
 	TransitionScene *transition = TransitionFade::create(1, scene);
 	Director::getInstance()->replaceScene(transition);
 }

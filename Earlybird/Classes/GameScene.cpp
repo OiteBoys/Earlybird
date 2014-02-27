@@ -11,3 +11,11 @@ bool GameScene::init(){
 		return false;
 	}
 }
+
+//this scene will be loaded when user clicked the "start" menu
+void GameScene::menuStartCallback(Object* pSender)
+{
+   // do something here
+	float t = 2;
+	
+}

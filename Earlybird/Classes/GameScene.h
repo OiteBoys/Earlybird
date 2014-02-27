@@ -8,5 +8,6 @@ public:
 	GameScene();
 	~GameScene();
 	bool virtual init();
+	void menuStartCallback(Object* pSender);
 	CREATE_FUNC(GameScene);
 };

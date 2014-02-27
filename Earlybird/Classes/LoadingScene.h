@@ -2,6 +2,7 @@
 #include "AtlasLoader.h"
 #include "SimpleAudioEngine.h"
 #include "HelloWorldScene.h"
+#include "WelcomeScene.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
