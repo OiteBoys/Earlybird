@@ -22,12 +22,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	this->setResourceSearchResolution();
 	
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
-
-
 
     // create a scene. it's an autorelease object
     auto scene = LoadingScene::create();
