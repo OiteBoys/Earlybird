@@ -3,6 +3,7 @@
 #include "SimpleAudioEngine.h"
 #include "HelloWorldScene.h"
 #include "WelcomeScene.h"
+#include "BackgroundLayer.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
