@@ -1,13 +1,21 @@
 #include "StatusLayer.h"
+
+
 StatusLayer::StatusLayer(){};
+
 StatusLayer::~StatusLayer(){};
+
+
 bool StatusLayer::init(){
 	if(!Layer::init()){
 		return false;
 	}
+
+	this->showReadyStatus();
 	return true;
 }
-void StatusLayer::onGameStart(){
+
+void StatusLayer::showReadyStatus() {
 	this->removeAllChildren();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Point originPoint = Director::getInstance()->getVisibleOrigin();
@@ -22,11 +30,11 @@ void StatusLayer::onGameStart(){
 	this->addChild(tutorialSprite);
 }
 
-void StatusLayer::onGamePlaying(){
+void StatusLayer::showStartStatus() {
 	this->removeAllChildren();
 }
 
-void StatusLayer::onGameEnd(int curScore, int bestScore){
+void StatusLayer::showOverStatus() {
 	this->removeAllChildren();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Point originPoint = Director::getInstance()->getVisibleOrigin();
@@ -45,4 +53,16 @@ void StatusLayer::onGameEnd(int curScore, int bestScore){
 	Sprite* startbtnSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_play"));
 	startbtnSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height * 1 / 7));
 	this->addChild(startbtnSprite);
+}
+
+void StatusLayer::onGameStart(){
+	this->showStartStatus();
+}
+
+void StatusLayer::onGamePlaying(int score){
+	// Change the socre that displayed
+}
+
+void StatusLayer::onGameEnd(int curScore, int bestScore){
+	this->showOverStatus();
 }

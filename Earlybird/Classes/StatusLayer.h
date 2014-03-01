@@ -1,19 +1,33 @@
 #pragma once
-#include "AtlasLoader.h"
-#include "OptionDelegate.h"
+
 #include "cocos2d.h"
+#include "AtlasLoader.h"
+#include "GameLayer.h"
 
 using namespace std;
 using namespace cocos2d;
 
-class StatusLayer:public Layer,public OptionDelegate{
+class StatusLayer:public Layer,public StatusDelegate{
 public:
+
 	StatusLayer(void);
+
 	~StatusLayer(void);
+
 	virtual bool init();
+
 	CREATE_FUNC(StatusLayer);
 
 	void onGameStart();
-	void onGamePlaying();
+
+	void onGamePlaying(int score);
+
 	void onGameEnd(int curSocre, int bestScore);
+
+private:
+	void showReadyStatus();
+
+	void showStartStatus();
+
+	void showOverStatus();
 };
