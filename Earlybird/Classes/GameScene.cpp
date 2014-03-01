@@ -6,6 +6,8 @@ GameScene::~GameScene(){}
 
 bool GameScene::init(){
 	if(Scene::initWithPhysics()){
+		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+
 		// Add the background
 		auto backgroundLayer = BackgroundLayer::create();
 		if(backgroundLayer) {

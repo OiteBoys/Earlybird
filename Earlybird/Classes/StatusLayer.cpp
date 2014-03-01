@@ -19,20 +19,31 @@ void StatusLayer::showReadyStatus() {
 	this->removeAllChildren();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Point originPoint = Director::getInstance()->getVisibleOrigin();
-	Sprite* scoreSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("number_score_00"));
-	Sprite* getreadySprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("text_ready"));
-	Sprite* tutorialSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("tutorial"));
-	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height *4 / 5));
-	getreadySprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *3 / 5));
-	tutorialSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height * 2 / 5));
+	scoreSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("font_048"));
+	getreadySprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("text_ready"));
+	tutorialSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("tutorial"));
+	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height *5/6));
+	getreadySprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *2/3));
+	tutorialSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height * 1/2));
 	this->addChild(scoreSprite);
 	this->addChild(getreadySprite);
 	this->addChild(tutorialSprite);
 }
 
 void StatusLayer::showStartStatus() {
-	this->removeAllChildren();
+	//ActionInterval * fadeout = FadeOut::create(1);
+	/*CallFunc *actionDone = CallFunc::create(CC_CALLBACK_1(StatusLayer::clearSprite, this));
+	Sequence *sequence = Sequence::create(fadeout, actionDone, NULL);*/
+	//this->getreadySprite->runAction(FadeOut::create(1));
+	//this->tutorialSprite->runAction(FadeOut::create(1));
+	this->getreadySprite->removeFromParent();
+	this->tutorialSprite->removeFromParent();
 }
+
+//void StatusLayer::clearSprite(Object* sender) {
+//	Sprite *sprite = (Sprite*) sender;
+//	sprite->removeFromParent();
+//}
 
 void StatusLayer::showOverStatus() {
 	this->removeAllChildren();

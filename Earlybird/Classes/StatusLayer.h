@@ -30,4 +30,12 @@ private:
 	void showStartStatus();
 
 	void showOverStatus();
+
+	Sprite* scoreSprite;
+
+	Sprite* getreadySprite;
+
+	Sprite* tutorialSprite;
+
+	/*void clearSprite(Object* sender);*/
 };

@@ -2,6 +2,7 @@
 
 #include "cocos2d.h"
 #include "OptionLayer.h"
+#include "BirdSprite.h"
 using namespace cocos2d;
 
 /**
@@ -68,4 +69,6 @@ private:
 	 GameStatus gameStatus;
 
 	 int score;
+
+	 BirdSprite *bird;
 };
