@@ -4,7 +4,10 @@
 #include "OptionLayer.h"
 #include "BirdSprite.h"
 #include "BackgroundLayer.h"
+#include "math.h"
+
 using namespace cocos2d;
+using namespace std;
 
 /**
 * Define the game status
@@ -63,8 +66,15 @@ public:
 	* This layer need physical engine work
 	*/
 	void setPhyWorld(PhysicsWorld* world){this->world = world;}
+    
+    void update(float delta);
 
 private:
+    /**
+     * Set the rotate for the bird,let it looks like the head is very heavy.
+     */
+    void rotateBird();
+    
     PhysicsWorld *world;
 
     GameStatus gameStatus;

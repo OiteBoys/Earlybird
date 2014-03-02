@@ -20,7 +20,7 @@ bool GameLayer::init(){
         body->setDynamic(true);
 		body->setGravityEnable(false);
 		this->bird->setPhysicsBody(body);
-		this->bird->setPosition(origin.x + visiableSize.width*1/3,origin.y + visiableSize.height/2);
+		this->bird->setPosition(origin.x + visiableSize.width*1/3 - 5,origin.y + visiableSize.height/2 + 5);
 		this->bird->idle();
 		this->addChild(bird);
         
@@ -34,6 +34,8 @@ bool GameLayer::init(){
         this->groundNode->setPhysicsBody(groundBody);
         this->groundNode->setPosition(144, landHeight/2);
         this->addChild(this->groundNode);
+        
+        this->scheduleUpdate();
 		
 		return true;
 	}else {
@@ -46,7 +48,20 @@ void GameLayer::onTouch() {
 		this->delegator->onGameStart();
 		this->bird->fly();
 		this->gameStatus = GAME_STATUS_START;
+        
 	}else if(this->gameStatus == GAME_STATUS_START) {
 		this->bird->getPhysicsBody()->setVelocity(Vect(0, 260));
 	}
+}
+
+void GameLayer::rotateBird() {
+    float verticalSpeed = this->bird->getPhysicsBody()->getVelocity().y;
+    this->bird->setRotation(fmin(fmax(-90, (verticalSpeed*0.2 + 30)), 30));
+}
+
+
+void GameLayer::update(float delta) {
+    if (this->gameStatus == GAME_STATUS_START) {
+        this->rotateBird();
+    }
 }

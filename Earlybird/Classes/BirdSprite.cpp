@@ -16,11 +16,11 @@ bool BirdSprite::init() {
 		this->idleAction = RepeatForever::create(animate);
 
 		// create the swing action
-		ActionInterval *up = CCMoveBy::create(0.4f,Point(0, 7));
+		ActionInterval *up = CCMoveBy::create(0.4f,Point(0, 8));
 		ActionInterval *upBack= up->reverse();
-		ActionInterval *down = CCMoveBy::create(0.4f,Point(0, -7));
-		ActionInterval *downBack= down->reverse();
-		this->swingAction = RepeatForever::create(Sequence::create(up, upBack, down, downBack, NULL));
+//		ActionInterval *down = CCMoveBy::create(0.4f,Point(0, -4));
+//		ActionInterval *downBack= down->reverse();
+		this->swingAction = RepeatForever::create(Sequence::create(up, upBack, NULL));
 		return true;
 	}else {
 		return false;

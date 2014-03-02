@@ -34,10 +34,10 @@ void StatusLayer::showStartStatus() {
 	//ActionInterval * fadeout = FadeOut::create(1);
 	/*CallFunc *actionDone = CallFunc::create(CC_CALLBACK_1(StatusLayer::clearSprite, this));
 	Sequence *sequence = Sequence::create(fadeout, actionDone, NULL);*/
-	//this->getreadySprite->runAction(FadeOut::create(1));
-	//this->tutorialSprite->runAction(FadeOut::create(1));
-	this->getreadySprite->removeFromParent();
-	this->tutorialSprite->removeFromParent();
+	this->getreadySprite->runAction(FadeOut::create(0.4));
+	this->tutorialSprite->runAction(FadeOut::create(0.4));
+	//this->getreadySprite->removeFromParent();
+	//this->tutorialSprite->removeFromParent();
 }
 
 //void StatusLayer::clearSprite(Object* sender) {

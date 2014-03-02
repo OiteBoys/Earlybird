@@ -29,8 +29,6 @@ bool WelcomeLayer::init(){
 
 	//add the word game-title to the current scene
 	Sprite *title  = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("title"));
-	float titleWidth = title->getContentSize().width;
-	float titleHeight = title->getContentSize().height;
 	title->setPosition(Point(origin.x + visiableSize.width/2 , (visiableSize.height * 5) / 7));
 	this->addChild(title);
 
@@ -47,7 +45,7 @@ bool WelcomeLayer::init(){
 
 	//create a bird and set the position in the center of the screen
 	auto bird = BirdSprite::create();
-	bird->setPosition(Point(origin.x + visiableSize.width / 2,origin.y + visiableSize.height*3/5));
+	bird->setPosition(Point(origin.x + visiableSize.width / 2,origin.y + visiableSize.height*3/5 - 10));
 	bird->idle();
 	this->addChild(bird);
 
