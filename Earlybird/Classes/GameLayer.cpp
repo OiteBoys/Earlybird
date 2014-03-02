@@ -93,13 +93,14 @@ void GameLayer::onTouch() {
 
 void GameLayer::rotateBird() {
     float verticalSpeed = this->bird->getPhysicsBody()->getVelocity().y;
-    this->bird->setRotation(fmin(fmax(-90, (verticalSpeed*0.2 + 30)), 30));
+    this->bird->setRotation(min(max(-90, (verticalSpeed*0.2 + 30)), 30));
 }
 
 
 void GameLayer::update(float delta) {
     if (this->gameStatus == GAME_STATUS_START) {
         this->rotateBird();
+		this->checkHit();
     }
 }
 
@@ -132,6 +133,11 @@ int GameLayer::getRandomHeight() {
 
 void GameLayer::checkHit() {
     if (this->bird->getPositionY() < this->landSpite1->getContentSize().height + BIRD_RADIUS) {
-        this->delegator->onGameEnd(this->score, 0);
+		this->gameOver();
     }
+}
+
+void GameLayer::gameOver() {
+	 this->delegator->onGameEnd(this->score, 0);
+	 this->gameStatus = GAME_STATUS_OVER;
 }

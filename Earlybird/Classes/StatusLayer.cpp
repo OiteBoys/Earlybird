@@ -30,8 +30,8 @@ void StatusLayer::showReadyStatus() {
 }
 
 void StatusLayer::showStartStatus() {
-	this->getreadySprite->runAction(FadeOut::create(0.4));
-	this->tutorialSprite->runAction(FadeOut::create(0.4));
+	this->getreadySprite->runAction(FadeOut::create(0.4f));
+	this->tutorialSprite->runAction(FadeOut::create(0.4f));
 
 }
 
@@ -131,8 +131,8 @@ void StatusLayer::loadWhiteSprite(){
 
 void StatusLayer::blinkFullScreen(){
 	//display a flash blink
-	auto fadeOut = FadeOut::create(0.1);
-	auto fadeIn = FadeIn::create(0.1);
+	auto fadeOut = FadeOut::create(0.1f);
+	auto fadeIn = FadeIn::create(0.1f);
 	auto blinkAction = Sequence::create(fadeIn,fadeOut,NULL);
 	whiteSprite->runAction(blinkAction);
 }

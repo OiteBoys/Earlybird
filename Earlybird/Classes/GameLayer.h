@@ -5,11 +5,13 @@
 #include "BirdSprite.h"
 #include "BackgroundLayer.h"
 #include "AtlasLoader.h"
-#include "math.h"
 #include <cstdlib>
 
 using namespace cocos2d;
 using namespace std;
+
+#define min(X,Y) ((X) < (Y) ? (X) : (Y)) 
+#define max(X,Y) ((X) > (Y) ? (X) : (Y)) 
 
 /**
  * The radius of the bird
@@ -147,4 +149,6 @@ private:
     Sprite *landSpite1,*landSpite2;
     
 	void scrollLand(float dt);
+
+	void gameOver();
 };
