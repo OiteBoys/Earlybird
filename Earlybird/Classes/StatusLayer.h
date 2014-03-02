@@ -31,11 +31,23 @@ private:
 
 	void showOverStatus();
 
+	void loadWhiteSprite();
+
+	void blinkFullScreen();
+
+	void fadeInGameOver();
+
+	void jumpToScorePanel();
+
+	void fadeInRestartBtn();
+
 	Sprite* scoreSprite;
 
 	Sprite* getreadySprite;
 
 	Sprite* tutorialSprite;
+
+	Sprite* whiteSprite;
 
 	/*void clearSprite(Object* sender);*/
 };
