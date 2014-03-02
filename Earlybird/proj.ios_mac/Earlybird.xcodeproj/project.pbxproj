@@ -408,16 +408,20 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				51D52ED818C3141B00E6D58C /* GameLayer.cpp */,
+				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
+				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */,
 				51D52EA318C2E07500E6D58C /* AtlasLoader.h */,
 				51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */,
 				51D52EA518C2E07500E6D58C /* BackgroundLayer.h */,
 				51D52EA618C2E07500E6D58C /* BirdSprite.cpp */,
 				51D52EA718C2E07500E6D58C /* BirdSprite.h */,
+				51D52ED818C3141B00E6D58C /* GameLayer.cpp */,
 				51D52EA918C2E07500E6D58C /* GameLayer.h */,
 				51D52EAA18C2E07500E6D58C /* GameScene.cpp */,
 				51D52EAB18C2E07500E6D58C /* GameScene.h */,
+				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
+				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				51D52EAC18C2E07500E6D58C /* LoadingScene.cpp */,
 				51D52EAD18C2E07500E6D58C /* LoadingScene.h */,
 				51D52EAE18C2E07500E6D58C /* MenuScene.cpp */,
@@ -430,10 +434,6 @@
 				51D52EB718C2E07500E6D58C /* WelcomeLayer.h */,
 				51D52EB818C2E07500E6D58C /* WelcomeScene.cpp */,
 				51D52EB918C2E07500E6D58C /* WelcomeScene.h */,
-				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
-				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
-				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
-				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 			);
 			name = Classes;
 			path = ../classes;

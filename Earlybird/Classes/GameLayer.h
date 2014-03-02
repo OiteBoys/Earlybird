@@ -4,10 +4,47 @@
 #include "OptionLayer.h"
 #include "BirdSprite.h"
 #include "BackgroundLayer.h"
+#include "AtlasLoader.h"
 #include "math.h"
+#include <cstdlib>
 
 using namespace cocos2d;
 using namespace std;
+
+/**
+ * The height of the pips
+ */
+const int PIP_HEIGHT = 320;
+
+/**
+ * The width of the pips
+ */
+const int PIP_WIDTH = 52;
+
+/**
+ * Pip shift speed
+ */
+const float PIP_SHIFT_SPEED = 80.0f;
+
+/**
+ * The distance between the down pip and up pip
+ */
+const int PIP_DISTANCE = 80;
+
+/**
+ * The distance between the pips vertical
+ */
+const int PIP_INTERVAL = 200;
+
+/**
+ * The number of pip pairs display in the screen in the same time
+ */
+const int PIP_COUNT = 2;
+
+/**
+ * The distance that the pip will display in the screen, for player to ready
+ */
+const int WAIT_DISTANCE = 100;
 
 /**
 * Define the game status
@@ -75,6 +112,16 @@ private:
      */
     void rotateBird();
     
+    /**
+     * create new pips and make it move from left to right then remove from parent
+     */
+    void createPips();
+    
+    /**
+     * get a random number that can set the pip height
+     */
+    int getRandomHeight();
+    
     PhysicsWorld *world;
 
     GameStatus gameStatus;
@@ -84,4 +131,10 @@ private:
     BirdSprite *bird;
     
     Node *groundNode;
+    
+    vector<Node *> pips;
+    
+    Sprite *landSpite1,*landSpite2;
+    
+	void scrollLand(float dt);
 };

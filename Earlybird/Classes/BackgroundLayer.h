@@ -16,9 +16,4 @@ public:
 	CREATE_FUNC(BackgroundLayer);
     
     static float getLandHeight();
-
-private:
-	Sprite *landSpite1,*landSpite2;
-    
-	void scrollLand(float dt);
 };
