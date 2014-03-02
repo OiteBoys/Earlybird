@@ -7,6 +7,7 @@ GameScene::~GameScene(){}
 bool GameScene::init(){
 	if(Scene::initWithPhysics()){
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+        this->getPhysicsWorld()->setGravity(Vect(0, -900));
 
 		// Add the background
 		auto backgroundLayer = BackgroundLayer::create();

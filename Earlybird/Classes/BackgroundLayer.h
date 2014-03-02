@@ -8,11 +8,17 @@ using namespace std;
 class BackgroundLayer:public Layer{
 public:
 	BackgroundLayer(void);
+    
 	~BackgroundLayer(void);
+    
 	virtual bool init();
+    
 	CREATE_FUNC(BackgroundLayer);
+    
+    static float getLandHeight();
 
 private:
 	Sprite *landSpite1,*landSpite2;
+    
 	void scrollLand(float dt);
 };

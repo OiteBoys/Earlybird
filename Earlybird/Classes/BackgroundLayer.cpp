@@ -6,9 +6,6 @@ bool BackgroundLayer::init(){
 	if(!Layer::init()){
 		return false;
 	}
-	Point origin = Director::getInstance()->getVisibleOrigin();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	//get the current time, the background image will selected by current time day or night: bg_day or bg_night
 	time_t t = time(NULL);
 	tm* lt = localtime(&t);
@@ -35,7 +32,6 @@ bool BackgroundLayer::init(){
 	this->addChild(this->landSpite2,0);
 
 	this->schedule(schedule_selector(BackgroundLayer::scrollLand),0.01f);
-
 	return true;
 }
 
@@ -51,4 +47,8 @@ void BackgroundLayer::scrollLand(float dt){
 		// Avoid the black line bug
 		this->landSpite2->setLocalZOrder(0);
 	}
+}
+
+float BackgroundLayer::getLandHeight() {
+    return Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"))->getContentSize().height;
 }

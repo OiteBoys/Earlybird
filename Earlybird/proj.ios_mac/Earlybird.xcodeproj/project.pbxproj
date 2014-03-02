@@ -62,6 +62,21 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		51D52EBA18C2E07500E6D58C /* AtlasLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */; };
+		51D52EBB18C2E07500E6D58C /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */; };
+		51D52EBC18C2E07500E6D58C /* BirdSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA618C2E07500E6D58C /* BirdSprite.cpp */; };
+		51D52EBD18C2E07500E6D58C /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA818C2E07500E6D58C /* GameLayer.cpp */; };
+		51D52EBE18C2E07500E6D58C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EAA18C2E07500E6D58C /* GameScene.cpp */; };
+		51D52EBF18C2E07500E6D58C /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EAC18C2E07500E6D58C /* LoadingScene.cpp */; };
+		51D52EC018C2E07500E6D58C /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EAE18C2E07500E6D58C /* MenuScene.cpp */; };
+		51D52EC118C2E07500E6D58C /* OptionDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EB018C2E07500E6D58C /* OptionDelegate.cpp */; };
+		51D52EC218C2E07500E6D58C /* OptionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EB218C2E07500E6D58C /* OptionLayer.cpp */; };
+		51D52EC318C2E07500E6D58C /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EB418C2E07500E6D58C /* StatusLayer.cpp */; };
+		51D52EC418C2E07500E6D58C /* WelcomeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EB618C2E07500E6D58C /* WelcomeLayer.cpp */; };
+		51D52EC518C2E07500E6D58C /* WelcomeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EB818C2E07500E6D58C /* WelcomeScene.cpp */; };
+		51D52ECF18C2E09E00E6D58C /* atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D52ECC18C2E09E00E6D58C /* atlas.png */; };
+		51D52ED018C2E09E00E6D58C /* atlas.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51D52ECD18C2E09E00E6D58C /* atlas.txt */; };
+		51D52ED118C2E09E00E6D58C /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D52ECE18C2E09E00E6D58C /* splash.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -288,6 +303,38 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AtlasLoader.cpp; path = ../Classes/AtlasLoader.cpp; sourceTree = "<group>"; };
+		51D52EA318C2E07500E6D58C /* AtlasLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtlasLoader.h; path = ../Classes/AtlasLoader.h; sourceTree = "<group>"; };
+		51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BackgroundLayer.cpp; path = ../Classes/BackgroundLayer.cpp; sourceTree = "<group>"; };
+		51D52EA518C2E07500E6D58C /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundLayer.h; path = ../Classes/BackgroundLayer.h; sourceTree = "<group>"; };
+		51D52EA618C2E07500E6D58C /* BirdSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BirdSprite.cpp; path = ../Classes/BirdSprite.cpp; sourceTree = "<group>"; };
+		51D52EA718C2E07500E6D58C /* BirdSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirdSprite.h; path = ../Classes/BirdSprite.h; sourceTree = "<group>"; };
+		51D52EA818C2E07500E6D58C /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameLayer.cpp; path = ../Classes/GameLayer.cpp; sourceTree = "<group>"; };
+		51D52EA918C2E07500E6D58C /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = ../Classes/GameLayer.h; sourceTree = "<group>"; };
+		51D52EAA18C2E07500E6D58C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
+		51D52EAB18C2E07500E6D58C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
+		51D52EAC18C2E07500E6D58C /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadingScene.cpp; path = ../Classes/LoadingScene.cpp; sourceTree = "<group>"; };
+		51D52EAD18C2E07500E6D58C /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = ../Classes/LoadingScene.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		51D52EAE18C2E07500E6D58C /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuScene.cpp; path = ../Classes/MenuScene.cpp; sourceTree = "<group>"; };
+		51D52EAF18C2E07500E6D58C /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuScene.h; path = ../Classes/MenuScene.h; sourceTree = "<group>"; };
+		51D52EB018C2E07500E6D58C /* OptionDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OptionDelegate.cpp; path = ../Classes/OptionDelegate.cpp; sourceTree = "<group>"; };
+		51D52EB118C2E07500E6D58C /* OptionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionDelegate.h; path = ../Classes/OptionDelegate.h; sourceTree = "<group>"; };
+		51D52EB218C2E07500E6D58C /* OptionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OptionLayer.cpp; path = ../Classes/OptionLayer.cpp; sourceTree = "<group>"; };
+		51D52EB318C2E07500E6D58C /* OptionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionLayer.h; path = ../Classes/OptionLayer.h; sourceTree = "<group>"; };
+		51D52EB418C2E07500E6D58C /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = ../Classes/StatusLayer.cpp; sourceTree = "<group>"; };
+		51D52EB518C2E07500E6D58C /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = ../Classes/StatusLayer.h; sourceTree = "<group>"; };
+		51D52EB618C2E07500E6D58C /* WelcomeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = WelcomeLayer.cpp; path = ../Classes/WelcomeLayer.cpp; sourceTree = "<group>"; };
+		51D52EB718C2E07500E6D58C /* WelcomeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeLayer.h; path = ../Classes/WelcomeLayer.h; sourceTree = "<group>"; };
+		51D52EB818C2E07500E6D58C /* WelcomeScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WelcomeScene.cpp; path = ../Classes/WelcomeScene.cpp; sourceTree = "<group>"; };
+		51D52EB918C2E07500E6D58C /* WelcomeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeScene.h; path = ../Classes/WelcomeScene.h; sourceTree = "<group>"; };
+		51D52ECC18C2E09E00E6D58C /* atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = atlas.png; path = image/atlas.png; sourceTree = "<group>"; };
+		51D52ECD18C2E09E00E6D58C /* atlas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atlas.txt; path = image/atlas.txt; sourceTree = "<group>"; };
+		51D52ECE18C2E09E00E6D58C /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.png; path = image/splash.png; sourceTree = "<group>"; };
+		51D52ED218C2E0E800E6D58C /* sfx_die.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = sfx_die.ogg; path = sounds/sfx_die.ogg; sourceTree = "<group>"; };
+		51D52ED318C2E0E800E6D58C /* sfx_hit.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = sfx_hit.ogg; path = sounds/sfx_hit.ogg; sourceTree = "<group>"; };
+		51D52ED418C2E0E800E6D58C /* sfx_point.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = sfx_point.ogg; path = sounds/sfx_point.ogg; sourceTree = "<group>"; };
+		51D52ED518C2E0E800E6D58C /* sfx_swooshing.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = sfx_swooshing.ogg; path = sounds/sfx_swooshing.ogg; sourceTree = "<group>"; };
+		51D52ED618C2E0E800E6D58C /* sfx_wing.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = sfx_wing.ogg; path = sounds/sfx_wing.ogg; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -364,6 +411,30 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */,
+				51D52EA318C2E07500E6D58C /* AtlasLoader.h */,
+				51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */,
+				51D52EA518C2E07500E6D58C /* BackgroundLayer.h */,
+				51D52EA618C2E07500E6D58C /* BirdSprite.cpp */,
+				51D52EA718C2E07500E6D58C /* BirdSprite.h */,
+				51D52EA818C2E07500E6D58C /* GameLayer.cpp */,
+				51D52EA918C2E07500E6D58C /* GameLayer.h */,
+				51D52EAA18C2E07500E6D58C /* GameScene.cpp */,
+				51D52EAB18C2E07500E6D58C /* GameScene.h */,
+				51D52EAC18C2E07500E6D58C /* LoadingScene.cpp */,
+				51D52EAD18C2E07500E6D58C /* LoadingScene.h */,
+				51D52EAE18C2E07500E6D58C /* MenuScene.cpp */,
+				51D52EAF18C2E07500E6D58C /* MenuScene.h */,
+				51D52EB018C2E07500E6D58C /* OptionDelegate.cpp */,
+				51D52EB118C2E07500E6D58C /* OptionDelegate.h */,
+				51D52EB218C2E07500E6D58C /* OptionLayer.cpp */,
+				51D52EB318C2E07500E6D58C /* OptionLayer.h */,
+				51D52EB418C2E07500E6D58C /* StatusLayer.cpp */,
+				51D52EB518C2E07500E6D58C /* StatusLayer.h */,
+				51D52EB618C2E07500E6D58C /* WelcomeLayer.cpp */,
+				51D52EB718C2E07500E6D58C /* WelcomeLayer.h */,
+				51D52EB818C2E07500E6D58C /* WelcomeScene.cpp */,
+				51D52EB918C2E07500E6D58C /* WelcomeScene.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -487,6 +558,14 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51D52ED218C2E0E800E6D58C /* sfx_die.ogg */,
+				51D52ED318C2E0E800E6D58C /* sfx_hit.ogg */,
+				51D52ED418C2E0E800E6D58C /* sfx_point.ogg */,
+				51D52ED518C2E0E800E6D58C /* sfx_swooshing.ogg */,
+				51D52ED618C2E0E800E6D58C /* sfx_wing.ogg */,
+				51D52ECC18C2E09E00E6D58C /* atlas.png */,
+				51D52ECD18C2E09E00E6D58C /* atlas.txt */,
+				51D52ECE18C2E09E00E6D58C /* splash.png */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -688,17 +767,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				51D52ECF18C2E09E00E6D58C /* atlas.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				51D52ED118C2E09E00E6D58C /* splash.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
+				51D52ED018C2E09E00E6D58C /* atlas.txt in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
@@ -727,11 +809,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51D52EC318C2E07500E6D58C /* StatusLayer.cpp in Sources */,
+				51D52EBE18C2E07500E6D58C /* GameScene.cpp in Sources */,
+				51D52EC018C2E07500E6D58C /* MenuScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				51D52EC118C2E07500E6D58C /* OptionDelegate.cpp in Sources */,
+				51D52EC218C2E07500E6D58C /* OptionLayer.cpp in Sources */,
+				51D52EBB18C2E07500E6D58C /* BackgroundLayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				51D52EC418C2E07500E6D58C /* WelcomeLayer.cpp in Sources */,
+				51D52EBF18C2E07500E6D58C /* LoadingScene.cpp in Sources */,
+				51D52EBD18C2E07500E6D58C /* GameLayer.cpp in Sources */,
+				51D52EBA18C2E07500E6D58C /* AtlasLoader.cpp in Sources */,
+				51D52EC518C2E07500E6D58C /* WelcomeScene.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				51D52EBC18C2E07500E6D58C /* BirdSprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

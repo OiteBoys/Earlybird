@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "OptionLayer.h"
 #include "BirdSprite.h"
+#include "BackgroundLayer.h"
 using namespace cocos2d;
 
 /**
@@ -64,11 +65,13 @@ public:
 	void setPhyWorld(PhysicsWorld* world){this->world = world;}
 
 private:
-	 PhysicsWorld *world;
+    PhysicsWorld *world;
 
-	 GameStatus gameStatus;
+    GameStatus gameStatus;
 
-	 int score;
+    int score;
 
-	 BirdSprite *bird;
+    BirdSprite *bird;
+    
+    Node *groundNode;
 };

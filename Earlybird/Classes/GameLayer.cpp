@@ -15,13 +15,25 @@ bool GameLayer::init(){
 
 		// Add the bird
 		this->bird = BirdSprite::create();
-		PhysicsBody *body = PhysicsBody::createBox(bird->getContentSize());
+		PhysicsBody *body = PhysicsBody::create();
+        body->addShape(PhysicsShapeCircle::create(15));
+        body->setDynamic(true);
 		body->setGravityEnable(false);
-		body->addShape(PhysicsShapeBox::create(Size(20, 20), PHYSICSSHAPE_MATERIAL_DEFAULT, Point(10, 0)));
 		this->bird->setPhysicsBody(body);
 		this->bird->setPosition(origin.x + visiableSize.width*1/3,origin.y + visiableSize.height/2);
 		this->bird->idle();
 		this->addChild(bird);
+        
+        // Add the ground
+        this->groundNode = Node::create();
+        float landHeight = BackgroundLayer::getLandHeight();
+        auto groundBody = PhysicsBody::create();
+        groundBody->addShape(PhysicsShapeBox::create(Size(288, landHeight)));
+        groundBody->setDynamic(false);
+        groundBody->setLinearDamping(1.0f);
+        this->groundNode->setPhysicsBody(groundBody);
+        this->groundNode->setPosition(144, landHeight/2);
+        this->addChild(this->groundNode);
 		
 		return true;
 	}else {
@@ -35,6 +47,6 @@ void GameLayer::onTouch() {
 		this->bird->fly();
 		this->gameStatus = GAME_STATUS_START;
 	}else if(this->gameStatus == GAME_STATUS_START) {
-		this->bird->getPhysicsBody()->setVelocity(Vect(0, 50));
+		this->bird->getPhysicsBody()->setVelocity(Vect(0, 260));
 	}
 }
