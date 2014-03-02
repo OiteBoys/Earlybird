@@ -16,7 +16,7 @@ bool GameLayer::init(){
 		// Add the bird
 		this->bird = BirdSprite::create();
 		PhysicsBody *body = PhysicsBody::create();
-        body->addShape(PhysicsShapeCircle::create(15));
+        body->addShape(PhysicsShapeCircle::create(BIRD_RADIUS));
         body->setDynamic(true);
 		body->setGravityEnable(false);
 		this->bird->setPhysicsBody(body);
@@ -39,12 +39,12 @@ bool GameLayer::init(){
         this->landSpite1 = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"));
         this->landSpite1->setAnchorPoint(Point::ZERO);
         this->landSpite1->setPosition(Point::ZERO);
-        this->addChild(this->landSpite1,4000000);
+        this->addChild(this->landSpite1,40);
         
         this->landSpite2 = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"));
         this->landSpite2->setAnchorPoint(Point::ZERO);
         this->landSpite2->setPosition(this->landSpite1->getContentSize().width-2.0f,0);
-        this->addChild(this->landSpite2,3000000);
+        this->addChild(this->landSpite2,30);
         
         this->schedule(schedule_selector(GameLayer::scrollLand),0.01f);
         
@@ -63,10 +63,10 @@ void GameLayer::scrollLand(float dt){
 		this->landSpite1->setPositionX(0);
 	}else if(this->landSpite2->getPositionX() <= this->landSpite1->getContentSize().width/2.0f){
 		// Avoid the black line bug
-		this->landSpite2->setLocalZOrder(5000000);
+		this->landSpite2->setLocalZOrder(50);
 	}else if(this->landSpite2->getPositionX() > this->landSpite1->getContentSize().width/2.0f) {
 		// Avoid the black line bug
-		this->landSpite2->setLocalZOrder(3000000);
+		this->landSpite2->setLocalZOrder(30);
 	}
     
     // move the pips
@@ -111,6 +111,7 @@ void GameLayer::createPips() {
         Sprite *pipDown = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("pipe_down"));
         Node *singlePip = Node::create();
         
+        // bind to pair
         pipDown->setPosition(0, PIP_HEIGHT + PIP_DISTANCE);
         singlePip->addChild(pipDown);
         singlePip->addChild(pipUp);
@@ -127,4 +128,10 @@ void GameLayer::createPips() {
 int GameLayer::getRandomHeight() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     return rand()%(int)(2*PIP_HEIGHT + PIP_DISTANCE - visibleSize.height);
+}
+
+void GameLayer::checkHit() {
+    if (this->bird->getPositionY() < this->landSpite1->getContentSize().height + BIRD_RADIUS) {
+        this->delegator->onGameEnd(this->score, 0);
+    }
 }

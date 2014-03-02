@@ -12,6 +12,11 @@ using namespace cocos2d;
 using namespace std;
 
 /**
+ * The radius of the bird
+ */
+const int BIRD_RADIUS = 15;
+
+/**
  * The height of the pips
  */
 const int PIP_HEIGHT = 320;
@@ -121,6 +126,11 @@ private:
      * get a random number that can set the pip height
      */
     int getRandomHeight();
+    
+    /**
+     * Check the if the bird have hit anything
+     */
+    void checkHit();
     
     PhysicsWorld *world;
 
