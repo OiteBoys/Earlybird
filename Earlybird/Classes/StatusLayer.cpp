@@ -40,10 +40,10 @@ void StatusLayer::showOverStatus() {
 	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	this->removeChild(scoreSprite);
 
-
 	this->blinkFullScreen();
 	this->fadeInGameOver();
 	this->jumpToScorePanel();
+	this->fadeInRestartBtn();
 
 	//Sprite* scorepanelSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("score_panel"));
 	//scorepanelSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height * 3 / 7));
@@ -67,36 +67,7 @@ void StatusLayer::onGamePlaying(int score){
 	stack<string> scoreStringStack;
 	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	//get the score number by each digit
-	while(score){
-		int temp = score % 10;
-		score /= 10;
-		switch(temp){
-			case 0:
-				scoreImgName = "font_048";break;
-			case 1:
-				scoreImgName = "font_049";break;
-			case 2:
-				scoreImgName = "font_050";break;
-			case 3:
-				scoreImgName = "font_051";break;
-			case 4:
-				scoreImgName = "font_052";break;
-			case 5:
-				scoreImgName = "font_053";break;
-			case 6:
-				scoreImgName = "font_054";break;
-			case 7:
-				scoreImgName = "font_055";break;
-			case 8:
-				scoreImgName = "font_056";break;
-			case 9:
-				scoreImgName = "font_057";break;
-			default:
-				scoreImgName = "font_048";break;
-		};
-		scoreStringStack.push(scoreImgName);
-	}
+	scoreStringStack = getScoreByDigit(score);
 	this->removeChild(scoreSprite);
 	scoreSprite = Sprite::create();
 	//get the sprite of every digit
@@ -143,6 +114,7 @@ void StatusLayer::fadeInGameOver(){
 	gameoverSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *2/3));
 	this->addChild(gameoverSprite);
 	auto gameoverFadeIn = FadeIn::create(1);
+	//FiniteTimeAction* seq = Sequence::create(gameoverFadeIn,CC_CALLBACK_0(StatusLayer::jumpToScorePanel,this),NULL);
 	gameoverSprite->runAction(gameoverFadeIn);
 }
 
@@ -153,5 +125,57 @@ void StatusLayer::jumpToScorePanel(){
 	scorepanelSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y - scorepanelSprite->getContentSize().height));
     this->addChild(scorepanelSprite);
 	auto scorePanelMoveTo = MoveTo::create(1,Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height/2));
+	//Action* seq = Sequence::create(scorePanelMoveTo,CC_CALLBACK_0(StatusLayer::fadeInRestartBtn,this),NULL);
 	scorepanelSprite->runAction(scorePanelMoveTo);
+}
+
+void StatusLayer::fadeInRestartBtn(){
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Point originPoint = Director::getInstance()->getVisibleOrigin();
+	Node * tmpNode = Node::create();
+	Sprite* restartBtn = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_play"));
+	restartBtn->setPosition(Point(originPoint.x + visibleSize.width / 2 - restartBtn->getContentSize().width / 2, originPoint.y + visibleSize.height * 2 / 7));
+	tmpNode->addChild(restartBtn);
+	Sprite* rateBtn = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_score"));
+	rateBtn->setPosition(Point(originPoint.x + visibleSize.width / 2 + rateBtn->getContentSize().width / 2, originPoint.y + visibleSize.height * 2 / 7));
+	tmpNode->addChild(rateBtn);
+	this->addChild(tmpNode);
+	auto fadeIn = FadeIn::create(5);
+	tmpNode->runAction(fadeIn);
+}
+
+stack<string> StatusLayer::getScoreByDigit(int score){
+	string scoreImgName;
+	stack<string> scoreStringStack;
+	//get the score number by each digit
+	while(score){
+		int temp = score % 10;
+		score /= 10;
+		switch(temp){
+			case 0:
+				scoreImgName = "font_048";break;
+			case 1:
+				scoreImgName = "font_049";break;
+			case 2:
+				scoreImgName = "font_050";break;
+			case 3:
+				scoreImgName = "font_051";break;
+			case 4:
+				scoreImgName = "font_052";break;
+			case 5:
+				scoreImgName = "font_053";break;
+			case 6:
+				scoreImgName = "font_054";break;
+			case 7:
+				scoreImgName = "font_055";break;
+			case 8:
+				scoreImgName = "font_056";break;
+			case 9:
+				scoreImgName = "font_057";break;
+			default:
+				scoreImgName = "font_048";break;
+		};
+		scoreStringStack.push(scoreImgName);
+	}
+	return scoreStringStack;
 }

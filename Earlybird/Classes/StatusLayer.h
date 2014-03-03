@@ -33,6 +33,8 @@ private:
 
 	void loadWhiteSprite();
 
+	stack<string> getScoreByDigit(int score);
+
 	void blinkFullScreen();
 
 	void fadeInGameOver();
