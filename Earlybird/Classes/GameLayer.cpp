@@ -138,6 +138,7 @@ void GameLayer::checkHit() {
 }
 
 void GameLayer::gameOver() {
-	 this->delegator->onGameEnd(this->score, 0);
+	 //this->delegator->onGameEnd(this->score, 0);
+	 this->delegator->onGameEnd(12,30);
 	 this->gameStatus = GAME_STATUS_OVER;
 }

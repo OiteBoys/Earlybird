@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "AtlasLoader.h"
 #include "GameLayer.h"
+#include "GameScene.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -22,18 +23,20 @@ public:
 
 	void onGamePlaying(int score);
 
-	void onGameEnd(int curSocre, int bestScore);
+	void onGameEnd(int curScore, int bestScore);
 
 private:
 	void showReadyStatus();
 
 	void showStartStatus();
 
-	void showOverStatus();
+	void showOverStatus(int curScore, int bestScore);
 
 	void loadWhiteSprite();
 
 	stack<string> getScoreByDigit(int score);
+
+	stack<string> getScoreBySmallDigit(int score);
 
 	void blinkFullScreen();
 
@@ -42,6 +45,8 @@ private:
 	void jumpToScorePanel();
 
 	void fadeInRestartBtn();
+
+	void menuRestartCallback(Object *sender);
 
 	Sprite* scoreSprite;
 
