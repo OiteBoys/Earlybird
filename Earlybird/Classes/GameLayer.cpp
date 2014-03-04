@@ -46,14 +46,24 @@ bool GameLayer::init(){
         this->landSpite2->setPosition(this->landSpite1->getContentSize().width-2.0f,0);
         this->addChild(this->landSpite2,30);
         
-        this->schedule(schedule_selector(GameLayer::scrollLand),0.01f);
+		shiftLand = schedule_selector(GameLayer::scrollLand);
+        this->schedule(shiftLand, 0.01f);
         
         this->scheduleUpdate();
+
+		auto contactListener = EventListenerPhysicsContact::create();
+		contactListener->onContactBegin = CC_CALLBACK_2(GameLayer::onContactBegin, this);
+		this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 		
 		return true;
 	}else {
 		return false;
 	}
+}
+
+bool GameLayer::onContactBegin(EventCustom *event, const PhysicsContact& contact) {
+	this->gameOver();
+	return true;
 }
 
 void GameLayer::scrollLand(float dt){
@@ -100,7 +110,7 @@ void GameLayer::rotateBird() {
 void GameLayer::update(float delta) {
     if (this->gameStatus == GAME_STATUS_START) {
         this->rotateBird();
-		this->checkHit();
+		//this->checkHit();
     }
 }
 
@@ -114,14 +124,17 @@ void GameLayer::createPips() {
         
         // bind to pair
         pipDown->setPosition(0, PIP_HEIGHT + PIP_DISTANCE);
-        singlePip->addChild(pipDown);
-        singlePip->addChild(pipUp);
+		singlePip->addChild(pipDown, 0, DOWN_PIP);
+        singlePip->addChild(pipUp, 0, UP_PIP);
         singlePip->setPosition(visibleSize.width + i*PIP_INTERVAL + WAIT_DISTANCE, this->getRandomHeight());
+		auto body = PhysicsBody::create();
+		auto shapeBoxDown = PhysicsShapeBox::create(pipDown->getContentSize(),PHYSICSSHAPE_MATERIAL_DEFAULT, Point(0, PIP_HEIGHT + PIP_DISTANCE));
+		body->addShape(shapeBoxDown);
+		body->addShape(PhysicsShapeBox::create(pipUp->getContentSize()));
+		body->setDynamic(false);
+		singlePip->setPhysicsBody(body);
         
         this->addChild(singlePip);
-//        int distance = singlePip->getPositionX() + PIP_WIDTH;
-//        Action *moveTo = MoveTo::create(distance/PIP_SHIFT_SPEED, Point(-PIP_WIDTH, singlePip->getPositionY()));
-//        singlePip->runAction(moveTo);
         this->pips.push_back(singlePip);
     }
 }
@@ -132,13 +145,29 @@ int GameLayer::getRandomHeight() {
 }
 
 void GameLayer::checkHit() {
-    if (this->bird->getPositionY() < this->landSpite1->getContentSize().height + BIRD_RADIUS) {
+    /*if (this->bird->getPositionY() < this->landSpite1->getContentSize().height + BIRD_RADIUS) {
 		this->gameOver();
-    }
+	}*/
+
+	/*for(auto pip : this->pips) {
+		float start = pip->getPositionX() - PIP_WIDTH/2;
+		float end = pip->getPositionX() + PIP_WIDTH/2;
+		float offHeight = pip->getPositionY();
+		float top = offHeight + PIP_HEIGHT + PIP_DISTANCE;
+		float bottom = offHeight + PIP_HEIGHT;
+		
+		if((this->bird->getPositionX() + BIRD_RADIUS) < end &&  (this->bird->getPositionX() - BIRD_RADIUS) > start) {
+			if((this->bird->getPositionY() + BIRD_RADIUS > top) || (this->bird->getPositionY() + BIRD_RADIUS < bottom)) {
+				this->gameOver();
+			}
+		}
+	}*/
 }
 
 void GameLayer::gameOver() {
-	 //this->delegator->onGameEnd(this->score, 0);
-	 this->delegator->onGameEnd(12,30);
-	 this->gameStatus = GAME_STATUS_OVER;
+	//this->delegator->onGameEnd(this->score, 0);
+	this->unschedule(shiftLand);
+	this->bird->setRotation(-90);
+	this->delegator->onGameEnd(12,30);
+	this->gameStatus = GAME_STATUS_OVER;
 }

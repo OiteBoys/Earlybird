@@ -13,6 +13,9 @@ using namespace std;
 #define min(X,Y) ((X) < (Y) ? (X) : (Y)) 
 #define max(X,Y) ((X) > (Y) ? (X) : (Y)) 
 
+const int UP_PIP = 21;
+const int DOWN_PIP = 12;
+
 /**
  * The radius of the bird
  */
@@ -147,8 +150,12 @@ private:
     vector<Node *> pips;
     
     Sprite *landSpite1,*landSpite2;
+
+	SEL_SCHEDULE  shiftLand;
     
 	void scrollLand(float dt);
+
+	bool onContactBegin(EventCustom *event, const PhysicsContact& contact);
 
 	void gameOver();
 };
