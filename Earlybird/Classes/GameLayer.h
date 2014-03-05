@@ -14,7 +14,12 @@ using namespace std;
 #define max(X,Y) ((X) > (Y) ? (X) : (Y)) 
 
 const int UP_PIP = 21;
+
 const int DOWN_PIP = 12;
+
+const int PIP_PASS = 30;
+
+const int PIP_NEW = 31;
 
 /**
  * The radius of the bird
@@ -39,7 +44,7 @@ const float PIP_SHIFT_SPEED = 80.0f;
 /**
  * The distance between the down pip and up pip
  */
-const int PIP_DISTANCE = 80;
+const int PIP_DISTANCE = 100;
 
 /**
  * The distance between the pips vertical

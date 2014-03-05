@@ -83,6 +83,7 @@ void GameLayer::scrollLand(float dt){
     for (auto singlePip : this->pips) {
         singlePip->setPositionX(singlePip->getPositionX() - 2);
         if(singlePip->getPositionX() < -PIP_WIDTH) {
+            singlePip->setTag(PIP_NEW);
             Size visibleSize = Director::getInstance()->getVisibleSize();
             singlePip->setPositionX(visibleSize.width);
             singlePip->setPositionY(this->getRandomHeight());
@@ -110,7 +111,7 @@ void GameLayer::rotateBird() {
 void GameLayer::update(float delta) {
     if (this->gameStatus == GAME_STATUS_START) {
         this->rotateBird();
-		//this->checkHit();
+		this->checkHit();
     }
 }
 
@@ -133,6 +134,7 @@ void GameLayer::createPips() {
 		body->addShape(PhysicsShapeBox::create(pipUp->getContentSize()));
 		body->setDynamic(false);
 		singlePip->setPhysicsBody(body);
+        singlePip->setTag(PIP_NEW);
         
         this->addChild(singlePip);
         this->pips.push_back(singlePip);
@@ -162,12 +164,21 @@ void GameLayer::checkHit() {
 			}
 		}
 	}*/
+    
+    for(auto pip : this->pips) {
+		if (pip->getTag() == PIP_NEW) {
+            if (pip->getPositionX() < this->bird->getPositionX()) {
+                this->score ++;
+                this->delegator->onGamePlaying(this->score);
+                pip->setTag(PIP_PASS);
+            }
+        }
+    }
 }
 
 void GameLayer::gameOver() {
-	//this->delegator->onGameEnd(this->score, 0);
+	this->delegator->onGameEnd(this->score, 30);
 	this->unschedule(shiftLand);
 	this->bird->setRotation(-90);
-	this->delegator->onGameEnd(12,30);
 	this->gameStatus = GAME_STATUS_OVER;
 }
