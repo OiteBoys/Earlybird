@@ -1,5 +1,25 @@
 #include "Number.h"
 
+NumberSeries::NumberSeries(){}
+
+NumberSeries::~NumberSeries(){}
+
+bool NumberSeries::init() {
+    this->numberSeries = Vector<SpriteFrame*>(10);
+    return true;
+}
+
+void NumberSeries::loadNumber(const char *fmt, int base) {
+    for (int i = base; i < 10 + base; i++){
+		const char *filename = String::createWithFormat(fmt, i)->getCString();
+		auto frame = AtlasLoader::getInstance()->getSpriteFrameByName(filename);
+		numberSeries.pushBack(frame);
+	}
+}
+
+SpriteFrame* NumberSeries::at(int index) {
+    return this->numberSeries.at(index);
+}
 
 Number* Number::sharedNumber = nullptr;
 
@@ -34,15 +54,9 @@ Number::~Number(){
 
 
 bool Number::loadNumber(const char* name, const char *fmt, int base){
-	auto numbers = new Sprite*[10];
-	for (int i = base; i < 10 + base; i++){
-		const char *filename = String::createWithFormat(fmt, i)->getCString();
-		auto frame = AtlasLoader::getInstance()->getSpriteFrameByName(filename);
-		auto numberSprite = Sprite::createWithSpriteFrame(frame);
-		numberSprite->setTag(i);
-		numbers[i] = numberSprite;
-	}
-	numberContainer.insert(name, numbers);
+    auto numberSeries = NumberSeries::create();
+    numberSeries->loadNumber(fmt, base);
+	numberContainer.insert(name, numberSeries);
 	return true;
 }
 
@@ -50,7 +64,7 @@ bool Number::loadNumber(const char* name, const char *fmt, int base){
 Node* Number::convert(const char* name, int number) {
 	auto numbers = numberContainer.at(name);
 	if (number == 0) {
-		return numbers[0];
+		return Sprite::createWithSpriteFrame(numbers->at(0));
 	}
 
 	auto numberNode = Node::create();
@@ -58,7 +72,7 @@ Node* Number::convert(const char* name, int number) {
 	while(number){
 		int temp = number % 10;
 		number /= 10;
-		auto sprite = numbers[temp];
+		auto sprite = Sprite::createWithSpriteFrame(numbers->at(temp));
 		totalWidth += sprite->getContentSize().width;
 		numberNode->addChild(sprite);
 	}

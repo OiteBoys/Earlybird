@@ -11,6 +11,23 @@ using namespace std;
 */
 const int NumberInterval = 4;
 
+class NumberSeries : public Object{
+public:
+    NumberSeries();
+    
+    ~NumberSeries();
+    
+    virtual bool init();
+    
+    CREATE_FUNC(NumberSeries);
+    
+    void loadNumber(const char *fmt, int base = 0);
+    
+    SpriteFrame* at(int index);
+private:
+    Vector<SpriteFrame*> numberSeries;
+};
+
 /**
 * @class Number
 * Used to create the number sprite from texture and image, and
@@ -56,7 +73,7 @@ public:
 	virtual bool init();
 
 private:
-	map<std::string, Sprite*[]> numberContainer;
+	Map<string, NumberSeries*> numberContainer;
 
 	static Number* sharedNumber;
 };

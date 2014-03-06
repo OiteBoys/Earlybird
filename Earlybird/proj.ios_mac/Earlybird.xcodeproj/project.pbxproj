@@ -62,6 +62,7 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		5144753D18C8062900BC6ACD /* Number.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5144753B18C8062900BC6ACD /* Number.cpp */; };
 		51D52EBA18C2E07500E6D58C /* AtlasLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */; };
 		51D52EBB18C2E07500E6D58C /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */; };
 		51D52EBC18C2E07500E6D58C /* BirdSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA618C2E07500E6D58C /* BirdSprite.cpp */; };
@@ -302,6 +303,8 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		5144753B18C8062900BC6ACD /* Number.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Number.cpp; path = ../Classes/Number.cpp; sourceTree = "<group>"; };
+		5144753C18C8062900BC6ACD /* Number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Number.h; path = ../Classes/Number.h; sourceTree = "<group>"; };
 		51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AtlasLoader.cpp; path = ../Classes/AtlasLoader.cpp; sourceTree = "<group>"; };
 		51D52EA318C2E07500E6D58C /* AtlasLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtlasLoader.h; path = ../Classes/AtlasLoader.h; sourceTree = "<group>"; };
 		51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BackgroundLayer.cpp; path = ../Classes/BackgroundLayer.cpp; sourceTree = "<group>"; };
@@ -408,6 +411,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5144753B18C8062900BC6ACD /* Number.cpp */,
+				5144753C18C8062900BC6ACD /* Number.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */,
@@ -818,6 +823,7 @@
 				51D52EBF18C2E07500E6D58C /* LoadingScene.cpp in Sources */,
 				51D52EBA18C2E07500E6D58C /* AtlasLoader.cpp in Sources */,
 				51D52EC518C2E07500E6D58C /* WelcomeScene.cpp in Sources */,
+				5144753D18C8062900BC6ACD /* Number.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				51D52EBC18C2E07500E6D58C /* BirdSprite.cpp in Sources */,
 			);
