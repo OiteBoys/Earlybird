@@ -6,6 +6,12 @@
 using namespace cocos2d;
 using namespace std;
 
+typedef enum _gravity {
+	GRAVITY_CENTER = 1,
+	GRAVITY_LEFT,
+	GRAVITY_RIGHT
+} Gravity;
+
 /**
 * The distance between two number
 */
@@ -68,7 +74,7 @@ public:
 	*
 	* @return the Node presenting the given number
 	*/
-	Node* convert(const char* name, int number);
+	Node* convert(const char* name, int number, Gravity gravity = Gravity::GRAVITY_CENTER);
 
 	virtual bool init();
 

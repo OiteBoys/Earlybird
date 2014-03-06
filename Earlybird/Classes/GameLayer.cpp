@@ -147,24 +147,6 @@ int GameLayer::getRandomHeight() {
 }
 
 void GameLayer::checkHit() {
-    /*if (this->bird->getPositionY() < this->landSpite1->getContentSize().height + BIRD_RADIUS) {
-		this->gameOver();
-	}*/
-
-	/*for(auto pip : this->pips) {
-		float start = pip->getPositionX() - PIP_WIDTH/2;
-		float end = pip->getPositionX() + PIP_WIDTH/2;
-		float offHeight = pip->getPositionY();
-		float top = offHeight + PIP_HEIGHT + PIP_DISTANCE;
-		float bottom = offHeight + PIP_HEIGHT;
-		
-		if((this->bird->getPositionX() + BIRD_RADIUS) < end &&  (this->bird->getPositionX() - BIRD_RADIUS) > start) {
-			if((this->bird->getPositionY() + BIRD_RADIUS > top) || (this->bird->getPositionY() + BIRD_RADIUS < bottom)) {
-				this->gameOver();
-			}
-		}
-	}*/
-    
     for(auto pip : this->pips) {
 		if (pip->getTag() == PIP_NEW) {
             if (pip->getPositionX() < this->bird->getPositionX()) {
@@ -182,6 +164,7 @@ void GameLayer::gameOver() {
     }
 	this->delegator->onGameEnd(this->score, 30);
 	this->unschedule(shiftLand);
+	this->bird->die();
 	this->bird->setRotation(-90);
 	this->gameStatus = GAME_STATUS_OVER;
 }

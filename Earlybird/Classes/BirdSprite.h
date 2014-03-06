@@ -6,7 +6,8 @@ using namespace cocos2d;
 
 typedef enum{
     ACTION_STATE_IDLE,
-	ACTION_STATE_FLY
+	ACTION_STATE_FLY,
+	ACTION_STATE_DIE
 } ActionState;
 
 class BirdSprite : public Sprite {
@@ -37,6 +38,11 @@ public:
 	* The bird fly drived by player, effected by gravity. need physical support.
 	*/
 	void fly();
+
+	/**
+	* The bird die
+	*/
+	void die();
 	
 protected:
 	/**

@@ -23,14 +23,17 @@ bool StatusLayer::init(){
 void StatusLayer::showReadyStatus() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Point originPoint = Director::getInstance()->getVisibleOrigin();
-	scoreSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("font_048"));
-	getreadySprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("text_ready"));
-	tutorialSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("tutorial"));
+
+	scoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_FONT.c_str(), 0);
 	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height *5/6));
-	getreadySprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *2/3));
-	tutorialSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height * 1/2));
 	this->addChild(scoreSprite);
+
+	getreadySprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("text_ready"));
+	getreadySprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *2/3));
 	this->addChild(getreadySprite);
+
+	tutorialSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("tutorial"));
+	tutorialSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height * 1/2));
 	this->addChild(tutorialSprite);
 }
 
@@ -55,7 +58,7 @@ void StatusLayer::onGamePlaying(int score){
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	this->removeChild(scoreSprite);
-	this->scoreSprite = (Sprite* )Number::getInstance()->convert("font", score);
+	this->scoreSprite = (Sprite* )Number::getInstance()->convert(NUMBER_FONT.c_str(), score);
 	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height *5/6));
 	this->addChild(scoreSprite);
 }
@@ -111,13 +114,17 @@ void StatusLayer::jumpToScorePanel(){
     
     
     //display the current score on the score panel
-	auto curScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->currentScore);
-	curScoreSprite->setPosition(0, 0);
+	auto curScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->currentScore, Gravity::GRAVITY_RIGHT);
+	curScoreSprite->setAnchorPoint(Point(1, 1));
+	curScoreSprite->setPosition(scorepanelSprite->getContentSize().width - 28, 
+		scorepanelSprite->getContentSize().height - 34);
 	scorepanelSprite->addChild(curScoreSprite);
     
 	//display the  best score on the score panel
-	auto bestScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->bestScore);
-	bestScoreSprite->setPosition(scorepanelSprite->getContentSize().width/4, -8);
+	auto bestScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->bestScore, Gravity::GRAVITY_RIGHT);
+	bestScoreSprite->setAnchorPoint(Point(1, 1));
+	bestScoreSprite->setPosition(scorepanelSprite->getContentSize().width - 28 ,
+		50);
 	scorepanelSprite->addChild(bestScoreSprite);
     
     
@@ -133,7 +140,7 @@ void StatusLayer::jumpToScorePanel(){
 		medalsName = "medals_3";
 	}
 	Sprite* medalsSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(medalsName));
-	medalsSprite->setPosition(-10, 0);
+	medalsSprite->setPosition(54, 58);
 	scorepanelSprite->addChild(medalsSprite);
     
 	//if the current score is higher than the best score.

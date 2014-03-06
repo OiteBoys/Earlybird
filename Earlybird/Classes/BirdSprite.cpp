@@ -7,7 +7,7 @@ BirdSprite::~BirdSprite() {
 }
 
 bool BirdSprite::init() {
-	if(Sprite::init()) {
+	if(Sprite::initWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("bird2_0"))) {
 		// init idle status
 
 		//create the bird animation
@@ -18,8 +18,6 @@ bool BirdSprite::init() {
 		// create the swing action
 		ActionInterval *up = CCMoveBy::create(0.4f,Point(0, 8));
 		ActionInterval *upBack= up->reverse();
-//		ActionInterval *down = CCMoveBy::create(0.4f,Point(0, -4));
-//		ActionInterval *downBack= down->reverse();
 		this->swingAction = RepeatForever::create(Sequence::create(up, upBack, NULL));
 		return true;
 	}else {
@@ -38,6 +36,12 @@ void BirdSprite::fly() {
 	if(changeState(ACTION_STATE_FLY)) {
 		this->stopAction(swingAction);
 		this->getPhysicsBody()->setGravityEnable(true);
+	}
+}
+
+void BirdSprite::die() {
+	if(changeState(ACTION_STATE_DIE)) {
+		this->stopAllActions();
 	}
 }
 

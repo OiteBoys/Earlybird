@@ -61,10 +61,12 @@ bool Number::loadNumber(const char* name, const char *fmt, int base){
 }
 
 
-Node* Number::convert(const char* name, int number) {
+Node* Number::convert(const char* name, int number, Gravity gravity) {
 	auto numbers = numberContainer.at(name);
 	if (number == 0) {
-		return Sprite::createWithSpriteFrame(numbers->at(0));
+		auto numberZero = Sprite::createWithSpriteFrame(numbers->at(0));
+		numberZero->setAnchorPoint(Point(0.5, 0));
+		return numberZero;
 	}
 
 	auto numberNode = Node::create();
@@ -77,12 +79,33 @@ Node* Number::convert(const char* name, int number) {
 		numberNode->addChild(sprite);
 	}
 
-	float singleWidth = totalWidth/numberNode->getChildrenCount();
-	int index = numberNode->getChildrenCount()/2;
-	for(auto child : numberNode->getChildren()) {
-		index --;
-		float offLength = singleWidth*index;
-		child->setPositionX(offLength);
+	auto numberZero = Sprite::createWithSpriteFrame(numbers->at(0));
+	numberNode->setContentSize(Size(totalWidth, numberZero->getContentSize().height));
+
+	if(gravity == Gravity::GRAVITY_CENTER) {
+		float singleWidth = totalWidth/numberNode->getChildrenCount();
+		int index = numberNode->getChildrenCount()/2;
+		for(auto child : numberNode->getChildren()) {
+			child->setAnchorPoint(Point(0.5, 0));
+			float offLength = singleWidth*index--;
+			child->setPositionX(offLength);
+		}
+	}else if(gravity == Gravity::GRAVITY_RIGHT) {
+		float singleWidth = totalWidth/numberNode->getChildrenCount();
+		int index = numberNode->getChildrenCount();
+		for(auto child : numberNode->getChildren()) {
+			child->setAnchorPoint(Point(1, 0));
+			float offLength = singleWidth*index--;
+			child->setPositionX(offLength);
+		} 
+	}else if(gravity == Gravity::GRAVITY_LEFT) {
+		float singleWidth = totalWidth/numberNode->getChildrenCount();
+		int index = 0;
+		for(auto child : numberNode->getChildren()) {
+			child->setAnchorPoint(Point::ZERO);
+			float offLength = singleWidth*index++;
+			child->setPositionX(offLength);
+		} 
 	}
 	return numberNode;
 }
