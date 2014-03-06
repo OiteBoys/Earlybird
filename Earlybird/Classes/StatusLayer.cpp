@@ -10,6 +10,8 @@ bool StatusLayer::init(){
 	if(!Layer::init()){
 		return false;
 	}
+	// init numbers
+	Number::getInstance()->loadNumber("font", "font_0%02d", 48);
 	this->showReadyStatus();
 	this->loadWhiteSprite();
 	return true;
@@ -111,28 +113,10 @@ void StatusLayer::onGameStart(){
 }
 
 void StatusLayer::onGamePlaying(int score){
-	// Change the socre that displayed
-	string scoreImgName;
-	stack<string> scoreStringStack;
-	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	scoreStringStack = getScoreByDigit(score);
+	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	this->removeChild(scoreSprite);
-	scoreSprite = Sprite::create();
-	//get the sprite of every digit
-	while(!scoreStringStack.empty()){
-		string tempString = scoreStringStack.top();
-		scoreStringStack.pop();
-		Sprite* tmpScoreSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(tempString));
-		int childCount = scoreSprite->getChildrenCount();
-		tmpScoreSprite->setPosition(Point(0,0));
-		if(childCount == 0){
-			tmpScoreSprite->setPosition(Point(0,0));
-		}else{
-			tmpScoreSprite->setPosition(Point(childCount * tmpScoreSprite->getContentSize().width + 2.0f, 0));
-		}
-		scoreSprite->addChild(tmpScoreSprite);
-	}
+	this->scoreSprite = (Sprite* )Number::getInstance()->convert("font", score);
 	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height *5/6));
 	this->addChild(scoreSprite);
 }

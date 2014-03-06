@@ -4,6 +4,7 @@
 #include "AtlasLoader.h"
 #include "GameLayer.h"
 #include "GameScene.h"
+#include "Number.h"
 
 using namespace std;
 using namespace cocos2d;
