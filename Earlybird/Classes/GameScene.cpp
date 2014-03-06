@@ -42,3 +42,8 @@ bool GameScene::init(){
 		return false;
 	}
 }
+
+void GameScene::restart() {
+    this->removeAllChildrenWithCleanup(true);
+    this->init();
+}

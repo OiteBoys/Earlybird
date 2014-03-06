@@ -9,9 +9,11 @@
 using namespace std;
 using namespace cocos2d;
 
+const string NUMBER_SCORE = "number_score";
+const string NUMBER_FONT = "font";
+
 class StatusLayer:public Layer,public StatusDelegate{
 public:
-
 	StatusLayer(void);
 
 	~StatusLayer(void);
@@ -35,10 +37,6 @@ private:
 
 	void loadWhiteSprite();
 
-	stack<string> getScoreByDigit(int score);
-
-	stack<string> getScoreBySmallDigit(int score);
-
 	void blinkFullScreen();
 
 	void fadeInGameOver();
@@ -56,6 +54,8 @@ private:
 	Sprite* tutorialSprite;
 
 	Sprite* whiteSprite;
-
-	/*void clearSprite(Object* sender);*/
+    
+    int currentScore;
+    
+    int bestScore;
 };

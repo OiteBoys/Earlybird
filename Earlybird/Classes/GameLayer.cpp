@@ -177,6 +177,9 @@ void GameLayer::checkHit() {
 }
 
 void GameLayer::gameOver() {
+    if(this->gameStatus == GAME_STATUS_OVER) {
+        return;
+    }
 	this->delegator->onGameEnd(this->score, 30);
 	this->unschedule(shiftLand);
 	this->bird->setRotation(-90);
