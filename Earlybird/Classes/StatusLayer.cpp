@@ -94,7 +94,7 @@ void StatusLayer::fadeInGameOver(){
 	Sprite* gameoverSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("text_game_over"));
 	gameoverSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *2/3));
 	this->addChild(gameoverSprite);
-	auto gameoverFadeIn = FadeIn::create(1);
+	auto gameoverFadeIn = FadeIn::create(0.5f);
     
     // Start next action
 	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::jumpToScorePanel, this));
@@ -152,10 +152,11 @@ void StatusLayer::jumpToScorePanel(){
 	}
 	
     // Start next action
-	auto scorePanelMoveTo = MoveTo::create(1,Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height/2));
+	auto scorePanelMoveTo = MoveTo::create(0.8 ,Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height/2));
 	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::fadeInRestartBtn, this));
     auto sequence = Sequence::createWithTwoActions(scorePanelMoveTo, actionDone);
     scorepanelSprite->stopAllActions();
+	SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
 	scorepanelSprite->runAction(sequence);
 }
 
@@ -181,12 +182,13 @@ void StatusLayer::fadeInRestartBtn(){
 	this->addChild(tmpNode);
     
 	//fade in the two buttons
-	auto fadeIn = FadeIn::create(5);
+	auto fadeIn = FadeIn::create(4);
     tmpNode->stopAllActions();
 	tmpNode->runAction(fadeIn);
 }
 
 void StatusLayer::menuRestartCallback(Object* pSender){
+	SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
     auto scene = GameScene::create();
     TransitionScene *transition = TransitionFade::create(1, scene);
     Director::getInstance()->replaceScene(transition);

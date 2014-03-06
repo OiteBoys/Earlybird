@@ -5,10 +5,12 @@
 #include "BirdSprite.h"
 #include "BackgroundLayer.h"
 #include "AtlasLoader.h"
+#include "SimpleAudioEngine.h"
 #include <cstdlib>
 
 using namespace cocos2d;
 using namespace std;
+using namespace CocosDenshion;
 
 #define min(X,Y) ((X) < (Y) ? (X) : (Y)) 
 #define max(X,Y) ((X) > (Y) ? (X) : (Y)) 
@@ -49,7 +51,7 @@ const int PIP_DISTANCE = 100;
 /**
  * The distance between the pips vertical
  */
-const int PIP_INTERVAL = 200;
+const int PIP_INTERVAL = 190;
 
 /**
  * The number of pip pairs display in the screen in the same time

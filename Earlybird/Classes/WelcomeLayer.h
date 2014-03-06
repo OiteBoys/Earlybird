@@ -10,6 +10,7 @@
 
 using namespace cocos2d;
 using namespace std;
+using namespace CocosDenshion;
 
 const int START_BUTTON_TAG = 100;
 

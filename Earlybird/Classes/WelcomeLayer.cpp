@@ -86,6 +86,7 @@ void WelcomeLayer::scrollLand(float dt){
 }
 
 void WelcomeLayer::menuStartCallback(Object *sender){
+	SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
 	auto scene = GameScene::create();
 	TransitionScene *transition = TransitionFade::create(1, scene);
 	Director::getInstance()->replaceScene(transition);

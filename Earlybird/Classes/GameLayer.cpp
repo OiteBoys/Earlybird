@@ -92,6 +92,11 @@ void GameLayer::scrollLand(float dt){
 }
 
 void GameLayer::onTouch() {
+	if(this->gameStatus == GAME_STATUS_OVER) {
+		return;
+	}
+
+	SimpleAudioEngine::getInstance()->playEffect("sfx_wing.ogg");
 	if(this->gameStatus == GAME_STATUS_READY) {
 		this->delegator->onGameStart();
 		this->bird->fly();
@@ -150,6 +155,7 @@ void GameLayer::checkHit() {
     for(auto pip : this->pips) {
 		if (pip->getTag() == PIP_NEW) {
             if (pip->getPositionX() < this->bird->getPositionX()) {
+				SimpleAudioEngine::getInstance()->playEffect("sfx_point.ogg");
                 this->score ++;
                 this->delegator->onGamePlaying(this->score);
                 pip->setTag(PIP_PASS);
@@ -162,8 +168,10 @@ void GameLayer::gameOver() {
     if(this->gameStatus == GAME_STATUS_OVER) {
         return;
     }
+	SimpleAudioEngine::getInstance()->playEffect("sfx_hit.ogg");
 	this->delegator->onGameEnd(this->score, 30);
 	this->unschedule(shiftLand);
+	SimpleAudioEngine::getInstance()->playEffect("sfx_die.ogg");
 	this->bird->die();
 	this->bird->setRotation(-90);
 	this->gameStatus = GAME_STATUS_OVER;

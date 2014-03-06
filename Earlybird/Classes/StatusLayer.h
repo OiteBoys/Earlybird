@@ -5,9 +5,11 @@
 #include "GameLayer.h"
 #include "GameScene.h"
 #include "Number.h"
+#include "SimpleAudioEngine.h"
 
 using namespace std;
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 const string NUMBER_SCORE = "number_score";
 const string NUMBER_FONT = "font";
