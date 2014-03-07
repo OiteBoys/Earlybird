@@ -150,8 +150,10 @@ void StatusLayer::jumpToScorePanel(){
 	
     // Start next action
 	auto scorePanelMoveTo = MoveTo::create(0.8 ,Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height/2));
+	// add variable motion for the action
+	EaseBounceInOut* sineIn = EaseBounceInOut::create(scorePanelMoveTo);
 	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::fadeInRestartBtn, this));
-    auto sequence = Sequence::createWithTwoActions(scorePanelMoveTo, actionDone);
+    auto sequence = Sequence::createWithTwoActions(sineIn, actionDone);
     scorepanelSprite->stopAllActions();
 	SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
 	scorepanelSprite->runAction(sequence);
