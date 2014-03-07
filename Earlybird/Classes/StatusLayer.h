@@ -60,4 +60,6 @@ private:
     int currentScore;
     
     int bestScore;
+	
+	bool isNewRecord;
 };

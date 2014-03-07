@@ -146,6 +146,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Number.cpp" />
     <ClCompile Include="..\Classes\OptionLayer.cpp" />
     <ClCompile Include="..\Classes\StatusLayer.cpp" />
+    <ClCompile Include="..\Classes\UserRecord.cpp" />
     <ClCompile Include="..\Classes\WelcomeLayer.cpp" />
     <ClCompile Include="..\Classes\WelcomeScene.cpp" />
     <ClCompile Include="main.cpp" />
@@ -162,6 +163,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Number.h" />
     <ClInclude Include="..\Classes\OptionLayer.h" />
     <ClInclude Include="..\Classes\StatusLayer.h" />
+    <ClInclude Include="..\Classes\UserRecord.h" />
     <ClInclude Include="..\Classes\WelcomeLayer.h" />
     <ClInclude Include="..\Classes\WelcomeScene.h" />
     <ClInclude Include="main.h" />

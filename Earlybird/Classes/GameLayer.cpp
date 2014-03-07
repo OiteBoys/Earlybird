@@ -169,7 +169,13 @@ void GameLayer::gameOver() {
         return;
     }
 	SimpleAudioEngine::getInstance()->playEffect("sfx_hit.ogg");
-	this->delegator->onGameEnd(this->score, 30);
+	//get the best score
+	int bestScore = UserRecord::getInstance()->readIntegerFromUserDefault("best_score");
+	//update the best score
+	if(this->score > bestScore){
+		UserRecord::getInstance()->saveIntegerToUserDefault("best_score",this->score);
+	}
+	this->delegator->onGameEnd(this->score, bestScore);
 	this->unschedule(shiftLand);
 	SimpleAudioEngine::getInstance()->playEffect("sfx_die.ogg");
 	this->bird->die();

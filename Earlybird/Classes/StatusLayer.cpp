@@ -13,6 +13,7 @@ bool StatusLayer::init(){
 	// init numbers
     this->bestScore = 0;
     this->currentScore = 0;
+	this->isNewRecord = false;
 	Number::getInstance()->loadNumber(NUMBER_FONT.c_str(), "font_0%02d", 48);
     Number::getInstance()->loadNumber(NUMBER_SCORE.c_str(), "number_score_%02d");
 	this->showReadyStatus();
@@ -45,7 +46,12 @@ void StatusLayer::showStartStatus() {
 void StatusLayer::showOverStatus(int curScore, int bestScore) {
     this->currentScore = curScore;
     this->bestScore = bestScore;
-    
+    if(curScore > bestScore){
+		this->bestScore = curScore;
+		this->isNewRecord = true;
+	}else{
+		this->isNewRecord = false;
+	}
 	this->removeChild(scoreSprite);
 	this->blinkFullScreen();
 }
@@ -145,9 +151,9 @@ void StatusLayer::jumpToScorePanel(){
     
 	//if the current score is higher than the best score.
 	//the panel will appear a "new" tag.
-	if(currentScore > bestScore){
+	if(this->isNewRecord){
 		Sprite* newTagSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("new"));
-		newTagSprite->setPosition(-6, -6);
+		newTagSprite->setPosition(-16, 54);
 		bestScoreSprite->addChild(newTagSprite);
 	}
 	

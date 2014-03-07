@@ -6,6 +6,7 @@
 #include "BackgroundLayer.h"
 #include "AtlasLoader.h"
 #include "SimpleAudioEngine.h"
+#include "UserRecord.h"
 #include <cstdlib>
 
 using namespace cocos2d;
