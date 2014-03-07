@@ -50,6 +50,12 @@ protected:
 	*/
     static cocos2d::Animation *createAnimation(const char *fmt, int count, float fps);
 
+	/**
+	 * Since this game has three different types of bird
+	 * this method is just used for choosing which type of bird by random
+	 */
+    void createBirdByRandom();
+
 private:
 	/**
 	* This method change current status. called by fly and idle etc.
@@ -63,4 +69,10 @@ private:
 	Action* swingAction;
 
 	ActionState currentStatus;
+
+	//the bird name will be created by random
+	string birdName;
+
+	//the bird name format depends on the bird name we have rendom created before
+	string birdNameFormat;
 };

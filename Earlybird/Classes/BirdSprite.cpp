@@ -7,11 +7,12 @@ BirdSprite::~BirdSprite() {
 }
 
 bool BirdSprite::init() {
-	if(Sprite::initWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("bird2_0"))) {
+	this->createBirdByRandom();
+	if(Sprite::initWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(this->birdName))) {
 		// init idle status
 
 		//create the bird animation
-		Animation* animation = this->createAnimation("bird2_%d", 3, 10);
+		Animation* animation = this->createAnimation(this->birdNameFormat.c_str(), 3, 10);
 		Animate* animate = Animate::create(animation);
 		this->idleAction = RepeatForever::create(animate);
 
@@ -60,4 +61,28 @@ bool BirdSprite::changeState(ActionState state) {
     //this->stopAllActions();
     currentStatus = state;
     return true;
+}
+
+void BirdSprite::createBirdByRandom(){
+	srand((unsigned)time(NULL));
+	int type = (int)rand() % 3;
+	switch (type)
+	{
+	case 0:
+		this->birdName = "bird0_0";
+		this->birdNameFormat = "bird0_%d";
+		break;
+	case 1:
+		this->birdName = "bird1_0";
+		this->birdNameFormat = "bird1_%d";
+		break;
+	case 2:
+		this->birdName = "bird2_0";
+		this->birdNameFormat = "bird2_%d";
+		break;
+	default:
+		this->birdName = "bird2_0";
+		this->birdNameFormat = "bird2_%d";
+		break;
+	}
 }
