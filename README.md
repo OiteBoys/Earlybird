@@ -33,6 +33,22 @@ Early Bird开发博客大纲
 =================
 基本高仿游戏，去看原版就够了
 
+注意
+=================
+代码忽略了cocos2dx的库，你可以在cocos2dx官方下载的库直接拷贝到/Earlybird下下载地址：<a href="http://cdn.cocos2d-x.org/cocos2d-x-3.0beta2.zip">cocos2d-x-3.0beta2</a>
+用下面代码随意创建一个项目
+<pre><code>
+$ cd cocos2d-x
+$ ./setup.py
+$ source FILE_TO_SAVE_SYSTEM_VARIABLE
+$ cocos new mygame -p com.your_company.mygame -l cpp -d /home/mygame
+$ cd /home/mygame
+</code></pre>
+将新建的项目中的cocos2d文件夹拷贝到Earlybird/即可
+
+代码中库随后上传...
+
+
 版权声明
 =================
 该游戏创意和素材的所有权归原作者所有，本程序仅供学习使用
