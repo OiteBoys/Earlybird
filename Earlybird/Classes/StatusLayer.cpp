@@ -16,25 +16,24 @@ bool StatusLayer::init(){
 	this->isNewRecord = false;
 	Number::getInstance()->loadNumber(NUMBER_FONT.c_str(), "font_0%02d", 48);
     Number::getInstance()->loadNumber(NUMBER_SCORE.c_str(), "number_score_%02d");
+	this->visibleSize = Director::getInstance()->getVisibleSize();
+	this->originPoint = Director::getInstance()->getVisibleOrigin();
 	this->showReadyStatus();
 	this->loadWhiteSprite();
 	return true;
 }
 
 void StatusLayer::showReadyStatus() {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Point originPoint = Director::getInstance()->getVisibleOrigin();
-
 	scoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_FONT.c_str(), 0);
-	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height *5/6));
+	scoreSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height *5/6));
 	this->addChild(scoreSprite);
 
 	getreadySprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("text_ready"));
-	getreadySprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *2/3));
+	getreadySprite->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2, this->originPoint.y + this->visibleSize.height *2/3));
 	this->addChild(getreadySprite);
 
 	tutorialSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("tutorial"));
-	tutorialSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height * 1/2));
+	tutorialSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2, this->originPoint.y + this->visibleSize.height * 1/2));
 	this->addChild(tutorialSprite);
 }
 
@@ -61,11 +60,9 @@ void StatusLayer::onGameStart(){
 }
 
 void StatusLayer::onGamePlaying(int score){
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	this->removeChild(scoreSprite);
 	this->scoreSprite = (Sprite* )Number::getInstance()->convert(NUMBER_FONT.c_str(), score);
-	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height *5/6));
+	scoreSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height *5/6));
 	this->addChild(scoreSprite);
 }
 
@@ -92,13 +89,10 @@ void StatusLayer::blinkFullScreen(){
 	whiteSprite->runAction(sequence);
 }
 
-void StatusLayer::fadeInGameOver(){
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Point originPoint = Director::getInstance()->getVisibleOrigin();
-    
+void StatusLayer::fadeInGameOver(){    
     // create the game over panel
 	Sprite* gameoverSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("text_game_over"));
-	gameoverSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y + visibleSize.height *2/3));
+	gameoverSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2, this->originPoint.y + this->visibleSize.height *2/3));
 	this->addChild(gameoverSprite);
 	auto gameoverFadeIn = FadeIn::create(0.5f);
     
@@ -109,13 +103,10 @@ void StatusLayer::fadeInGameOver(){
 	gameoverSprite->runAction(sequence);
 }
 
-void StatusLayer::jumpToScorePanel(){
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Point originPoint = Director::getInstance()->getVisibleOrigin();
-    
+void StatusLayer::jumpToScorePanel(){    
     // create the score panel
     Sprite* scorepanelSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("score_panel"));
-	scorepanelSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y - scorepanelSprite->getContentSize().height));
+	scorepanelSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2, this->originPoint.y - scorepanelSprite->getContentSize().height));
 	this->addChild(scorepanelSprite);
     
     
@@ -158,7 +149,7 @@ void StatusLayer::jumpToScorePanel(){
 	}
 	
     // Start next action
-	auto scorePanelMoveTo = MoveTo::create(0.8 ,Point(originPoint.x + visibleSize.width / 2,originPoint.y + visibleSize.height/2));
+	auto scorePanelMoveTo = MoveTo::create(0.8 ,Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height/2));
 	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::fadeInRestartBtn, this));
     auto sequence = Sequence::createWithTwoActions(scorePanelMoveTo, actionDone);
     scorepanelSprite->stopAllActions();
@@ -167,8 +158,6 @@ void StatusLayer::jumpToScorePanel(){
 }
 
 void StatusLayer::fadeInRestartBtn(){
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	Node * tmpNode = Node::create();
     
 	//create the restart menu;
@@ -177,13 +166,13 @@ void StatusLayer::fadeInRestartBtn(){
 	restartBtnActive->setPositionY(-4);
 	auto  menuItem = MenuItemSprite::create(restartBtn,restartBtnActive,NULL,CC_CALLBACK_1(StatusLayer::menuRestartCallback,this));
     auto menu = Menu::create(menuItem,NULL);
-	menu->setPosition(Point(originPoint.x + visibleSize.width / 2 - restartBtn->getContentSize().width / 2, originPoint.y + visibleSize.height * 2 / 7));
+	menu->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2 - restartBtn->getContentSize().width / 2, this->originPoint.y + this->visibleSize.height * 2 / 7));
 	tmpNode->addChild(menu);
     
     
 	//create the rate button. however ,this button is not available yet = =
 	Sprite* rateBtn = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_score"));
-	rateBtn->setPosition(Point(originPoint.x + visibleSize.width / 2 + rateBtn->getContentSize().width / 2, originPoint.y + visibleSize.height * 2 / 7));
+	rateBtn->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2 + rateBtn->getContentSize().width / 2, this->originPoint.y + this->visibleSize.height * 2 / 7));
 	tmpNode->addChild(rateBtn);
 	this->addChild(tmpNode);
     
@@ -204,14 +193,12 @@ void StatusLayer::refreshScoreCallback(){
 }
 
 void StatusLayer::refreshScoreExecutor(float dt){
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Point originPoint = Director::getInstance()->getVisibleOrigin();
 	if(this->getChildByTag(CURRENT_SCORE_SPRITE_TAG)){
 		this->removeChildByTag(CURRENT_SCORE_SPRITE_TAG);
 	}
 	scoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->tmpScore, Gravity::GRAVITY_RIGHT);
 	scoreSprite->setAnchorPoint(Point(1,0));
-	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width * 3 / 4 + 20.0f, originPoint.y + visibleSize.height *  1 / 2 + 10.0f));
+	scoreSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width * 3 / 4 + 20.0f, this->originPoint.y + this->visibleSize.height *  1 / 2 + 10.0f));
 	scoreSprite->setTag(CURRENT_SCORE_SPRITE_TAG);
 	this->addChild(scoreSprite,1000);
 	this->tmpScore++;
