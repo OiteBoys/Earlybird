@@ -118,9 +118,12 @@ void StatusLayer::jumpToScorePanel(){
     
     
 	string medalsName = this->getMedalsName(currentScore);
-	Sprite* medalsSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(medalsName));
-	medalsSprite->setPosition(54, 58);
-	scorepanelSprite->addChild(medalsSprite);
+	if(medalsName != "") {
+		Sprite* medalsSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(medalsName));
+		medalsSprite->addChild(this->blink);
+		medalsSprite->setPosition(54, 58);
+		scorepanelSprite->addChild(medalsSprite);
+	}
     
 	//if the current score is higher than the best score.
 	//the panel will appear a "new" tag.
@@ -131,7 +134,7 @@ void StatusLayer::jumpToScorePanel(){
 	}
 	
     // Start next action
-	auto scorePanelMoveTo = MoveTo::create(0.8 ,Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height/2 - 10.0f));
+	auto scorePanelMoveTo = MoveTo::create(0.8f ,Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height/2 - 10.0f));
 	// add variable motion for the action
 	EaseExponentialOut* sineIn = EaseExponentialOut::create(scorePanelMoveTo);
 	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::fadeInRestartBtn, this));
@@ -161,7 +164,7 @@ void StatusLayer::fadeInRestartBtn(){
 	this->addChild(tmpNode);
     
 	//fade in the two buttons
-	auto fadeIn = FadeIn::create(0.1);
+	auto fadeIn = FadeIn::create(0.1f);
     //tmpNode->stopAllActions();
 	//tmpNode->runAction(fadeIn);
 
@@ -191,16 +194,45 @@ void StatusLayer::refreshScoreExecutor(float dt){
 	}
 }
 
+void StatusLayer::setBlinkSprite() {
+	this->blink = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("blink_00"));
+	Animation *animation = Animation::create();
+    animation->setDelayPerUnit(0.1f);
+	for (int i = 0; i < 3; i++){
+		const char *filename = String::createWithFormat("blink_%02d", i)->getCString();
+		SpriteFrame *frame = AtlasLoader::getInstance()->getSpriteFrameByName(filename);
+		animation->addSpriteFrame(frame);
+	}
+	for (int i = 2; i >= 0; i--){
+		const char *filename = String::createWithFormat("blink_%02d", i)->getCString();
+		SpriteFrame *frame = AtlasLoader::getInstance()->getSpriteFrameByName(filename);
+		animation->addSpriteFrame(frame);
+	}
+	auto animate = Animate::create(animation);
+	auto actionDone = CallFunc::create(bind(&StatusLayer::blinkAction,this));
+	auto sequence = Sequence::createWithTwoActions(animate, actionDone);
+	blink->runAction(RepeatForever::create(sequence));
+}
+
+void StatusLayer::blinkAction() {
+	if(this->blink && this->blink->getParent()) {
+		Size activeSize = this->blink->getParent()->getContentSize();
+		this->blink->setPosition(rand()%((int)(activeSize.width)), rand()%((int)(activeSize.height)));
+	}
+}
+
 string StatusLayer::getMedalsName(int score){
+	this->setBlinkSprite();
+
 	//display the gold silver or bronze golden iron
-	string medalsName = "medals_0";
-	if(this->currentScore < 10){//iron medals
+	string medalsName = "";
+	if(this->currentScore > 10){//iron medals
 		medalsName = "medals_0";
-	}else if(this->currentScore >= 10 && currentScore < 30){//bronze medals
+	}else if(this->currentScore >= 20 && currentScore < 30){//bronze medals
 		medalsName = "medals_1";
 	}else if(currentScore >=30 && currentScore < 50){//silver medals
 		medalsName = "medals_2";
-	}else{//golden medals
+	}else if(currentScore >=50){//silver medals
 		medalsName = "medals_3";
 	}
 	return medalsName;

@@ -6,6 +6,7 @@
 #include "GameScene.h"
 #include "Number.h"
 #include "SimpleAudioEngine.h"
+#include <cstdlib>
 
 using namespace std;
 using namespace cocos2d;
@@ -54,6 +55,12 @@ private:
 
 	string getMedalsName(int score);
 
+	Sprite* blink;
+
+	void setBlinkSprite();
+
+	void blinkAction();
+
 	void menuRestartCallback(Object *sender);
 
 	Sprite* scoreSprite;
@@ -73,5 +80,6 @@ private:
 	bool isNewRecord;
 
 	Point originPoint;
+
 	Size visibleSize;
 };
