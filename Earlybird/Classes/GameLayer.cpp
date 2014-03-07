@@ -18,6 +18,7 @@ bool GameLayer::init(){
 		PhysicsBody *body = PhysicsBody::create();
         body->addShape(PhysicsShapeCircle::create(BIRD_RADIUS));
         body->setDynamic(true);
+		body->setLinearDamping(0.0f);
 		body->setGravityEnable(false);
 		this->bird->setPhysicsBody(body);
 		this->bird->setPosition(origin.x + visiableSize.width*1/3 - 5,origin.y + visiableSize.height/2 + 5);
@@ -30,7 +31,7 @@ bool GameLayer::init(){
         auto groundBody = PhysicsBody::create();
         groundBody->addShape(PhysicsShapeBox::create(Size(288, landHeight)));
         groundBody->setDynamic(false);
-        groundBody->setLinearDamping(1.0f);
+        groundBody->setLinearDamping(0.0f);
         this->groundNode->setPhysicsBody(groundBody);
         this->groundNode->setPosition(144, landHeight/2);
         this->addChild(this->groundNode);
@@ -109,7 +110,7 @@ void GameLayer::onTouch() {
 
 void GameLayer::rotateBird() {
     float verticalSpeed = this->bird->getPhysicsBody()->getVelocity().y;
-    this->bird->setRotation(min(max(-90, (verticalSpeed*0.2 + 30)), 30));
+    this->bird->setRotation(min(max(-90, (verticalSpeed*0.2 + 60)), 30));
 }
 
 
