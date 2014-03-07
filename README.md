@@ -45,8 +45,7 @@ $ cocos new mygame -p com.your_company.mygame -l cpp -d /home/mygame
 $ cd /home/mygame
 </code></pre>
 将新建的项目中的cocos2d文件夹拷贝到Earlybird/即可
-
-代码中库随后上传...
+库太大了，上传各种不方便，望体谅
 
 
 版权声明
