@@ -116,15 +116,15 @@ void StatusLayer::jumpToScorePanel(){
     // create the score panel
     Sprite* scorepanelSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("score_panel"));
 	scorepanelSprite->setPosition(Point(originPoint.x + visibleSize.width / 2, originPoint.y - scorepanelSprite->getContentSize().height));
-   	this->addChild(scorepanelSprite);
+	this->addChild(scorepanelSprite);
     
     
     //display the current score on the score panel
-	auto curScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->currentScore, Gravity::GRAVITY_RIGHT);
-	curScoreSprite->setAnchorPoint(Point(1, 1));
-	curScoreSprite->setPosition(scorepanelSprite->getContentSize().width - 28, 
-		scorepanelSprite->getContentSize().height - 34);
-	scorepanelSprite->addChild(curScoreSprite);
+	//auto curScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->currentScore, Gravity::GRAVITY_RIGHT);
+	//curScoreSprite->setAnchorPoint(Point(1, 1));
+	//curScoreSprite->setPosition(scorepanelSprite->getContentSize().width - 28, 
+	//	scorepanelSprite->getContentSize().height - 34);
+	//scorepanelSprite->addChild(curScoreSprite);
     
 	//display the  best score on the score panel
 	auto bestScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->bestScore, Gravity::GRAVITY_RIGHT);
@@ -188,9 +188,36 @@ void StatusLayer::fadeInRestartBtn(){
 	this->addChild(tmpNode);
     
 	//fade in the two buttons
-	auto fadeIn = FadeIn::create(4);
-    tmpNode->stopAllActions();
-	tmpNode->runAction(fadeIn);
+	auto fadeIn = FadeIn::create(1);
+    //tmpNode->stopAllActions();
+	//tmpNode->runAction(fadeIn);
+
+	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::refreshScoreCallback,this));
+	auto sequence = Sequence::createWithTwoActions(fadeIn,actionDone);
+	tmpNode->stopAllActions();
+	tmpNode->runAction(sequence);
+}
+
+void StatusLayer::refreshScoreCallback(){
+	this->tmpScore = 0;
+	schedule(schedule_selector(StatusLayer::refreshScoreExecutor),0.1f);
+}
+
+void StatusLayer::refreshScoreExecutor(float dt){
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Point originPoint = Director::getInstance()->getVisibleOrigin();
+	if(this->getChildByTag(CURRENT_SCORE_SPRITE_TAG)){
+		this->removeChildByTag(CURRENT_SCORE_SPRITE_TAG);
+	}
+	scoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->tmpScore, Gravity::GRAVITY_RIGHT);
+	scoreSprite->setAnchorPoint(Point(1,0));
+	scoreSprite->setPosition(Point(originPoint.x + visibleSize.width * 3 / 4 + 20.0f, originPoint.y + visibleSize.height *  1 / 2 + 10.0f));
+	scoreSprite->setTag(CURRENT_SCORE_SPRITE_TAG);
+	this->addChild(scoreSprite,1000);
+	this->tmpScore++;
+	if(this->tmpScore > this->currentScore){
+		unschedule(schedule_selector(StatusLayer::refreshScoreExecutor));
+	}
 }
 
 void StatusLayer::menuRestartCallback(Object* pSender){

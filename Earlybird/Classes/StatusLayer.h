@@ -13,6 +13,7 @@ using namespace CocosDenshion;
 
 const string NUMBER_SCORE = "number_score";
 const string NUMBER_FONT = "font";
+const int CURRENT_SCORE_SPRITE_TAG = 10001;
 
 class StatusLayer:public Layer,public StatusDelegate{
 public:
@@ -47,6 +48,10 @@ private:
 
 	void fadeInRestartBtn();
 
+	void refreshScoreCallback();
+
+	void refreshScoreExecutor(float dt);
+
 	void menuRestartCallback(Object *sender);
 
 	Sprite* scoreSprite;
@@ -61,5 +66,8 @@ private:
     
     int bestScore;
 	
+	int tmpScore;
+
 	bool isNewRecord;
+
 };
