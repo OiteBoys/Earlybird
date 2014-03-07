@@ -20,7 +20,6 @@ UserRecord* UserRecord::getInstance(){
 		if(!shareUserRecord->init()){
 			delete(shareUserRecord);
 			shareUserRecord = NULL;
-
 		}
 	}
 	return shareUserRecord;

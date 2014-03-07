@@ -52,6 +52,8 @@ private:
 
 	void refreshScoreExecutor(float dt);
 
+	string getMedalsName(int score);
+
 	void menuRestartCallback(Object *sender);
 
 	Sprite* scoreSprite;

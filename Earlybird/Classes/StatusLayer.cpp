@@ -108,15 +108,7 @@ void StatusLayer::jumpToScorePanel(){
     Sprite* scorepanelSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("score_panel"));
 	scorepanelSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2, this->originPoint.y - scorepanelSprite->getContentSize().height));
 	this->addChild(scorepanelSprite);
-    
-    
-    //display the current score on the score panel
-	//auto curScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->currentScore, Gravity::GRAVITY_RIGHT);
-	//curScoreSprite->setAnchorPoint(Point(1, 1));
-	//curScoreSprite->setPosition(scorepanelSprite->getContentSize().width - 28, 
-	//	scorepanelSprite->getContentSize().height - 34);
-	//scorepanelSprite->addChild(curScoreSprite);
-    
+        
 	//display the  best score on the score panel
 	auto bestScoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->bestScore, Gravity::GRAVITY_RIGHT);
 	bestScoreSprite->setAnchorPoint(Point(1, 1));
@@ -125,17 +117,7 @@ void StatusLayer::jumpToScorePanel(){
 	scorepanelSprite->addChild(bestScoreSprite);
     
     
-	//display the gold silver or bronze golden iron
-	string medalsName = "medals_0";
-	if(this->currentScore < 10){//iron medals
-		medalsName = "medals_0";
-	}else if(this->currentScore >= 10 && currentScore < 30){//bronze medals
-		medalsName = "medals_1";
-	}else if(currentScore >=30 && currentScore < 50){//silver medals
-		medalsName = "medals_2";
-	}else{//golden medals
-		medalsName = "medals_3";
-	}
+	string medalsName = this->getMedalsName(currentScore);
 	Sprite* medalsSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(medalsName));
 	medalsSprite->setPosition(54, 58);
 	scorepanelSprite->addChild(medalsSprite);
@@ -144,14 +126,14 @@ void StatusLayer::jumpToScorePanel(){
 	//the panel will appear a "new" tag.
 	if(this->isNewRecord){
 		Sprite* newTagSprite = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("new"));
-		newTagSprite->setPosition(-16, 54);
+		newTagSprite->setPosition(-16, 12);
 		bestScoreSprite->addChild(newTagSprite);
 	}
 	
     // Start next action
-	auto scorePanelMoveTo = MoveTo::create(0.8 ,Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height/2));
+	auto scorePanelMoveTo = MoveTo::create(0.8 ,Point(this->originPoint.x + this->visibleSize.width / 2,this->originPoint.y + this->visibleSize.height/2 - 10.0f));
 	// add variable motion for the action
-	EaseBounceInOut* sineIn = EaseBounceInOut::create(scorePanelMoveTo);
+	EaseExponentialOut* sineIn = EaseExponentialOut::create(scorePanelMoveTo);
 	CallFunc *actionDone = CallFunc::create(bind(&StatusLayer::fadeInRestartBtn, this));
     auto sequence = Sequence::createWithTwoActions(sineIn, actionDone);
     scorepanelSprite->stopAllActions();
@@ -168,13 +150,13 @@ void StatusLayer::fadeInRestartBtn(){
 	restartBtnActive->setPositionY(-4);
 	auto  menuItem = MenuItemSprite::create(restartBtn,restartBtnActive,NULL,CC_CALLBACK_1(StatusLayer::menuRestartCallback,this));
     auto menu = Menu::create(menuItem,NULL);
-	menu->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2 - restartBtn->getContentSize().width / 2, this->originPoint.y + this->visibleSize.height * 2 / 7));
+	menu->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2 - restartBtn->getContentSize().width / 2, this->originPoint.y + this->visibleSize.height * 2 / 7 - 10.0f));
 	tmpNode->addChild(menu);
     
     
 	//create the rate button. however ,this button is not available yet = =
 	Sprite* rateBtn = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_score"));
-	rateBtn->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2 + rateBtn->getContentSize().width / 2, this->originPoint.y + this->visibleSize.height * 2 / 7));
+	rateBtn->setPosition(Point(this->originPoint.x + this->visibleSize.width / 2 + rateBtn->getContentSize().width / 2, this->originPoint.y + this->visibleSize.height * 2 / 7 - 10.0f));
 	tmpNode->addChild(rateBtn);
 	this->addChild(tmpNode);
     
@@ -200,13 +182,28 @@ void StatusLayer::refreshScoreExecutor(float dt){
 	}
 	scoreSprite = (Sprite *)Number::getInstance()->convert(NUMBER_SCORE.c_str(), this->tmpScore, Gravity::GRAVITY_RIGHT);
 	scoreSprite->setAnchorPoint(Point(1,0));
-	scoreSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width * 3 / 4 + 20.0f, this->originPoint.y + this->visibleSize.height *  1 / 2 + 10.0f));
+	scoreSprite->setPosition(Point(this->originPoint.x + this->visibleSize.width * 3 / 4 + 20.0f, this->originPoint.y + this->visibleSize.height *  1 / 2));
 	scoreSprite->setTag(CURRENT_SCORE_SPRITE_TAG);
 	this->addChild(scoreSprite,1000);
 	this->tmpScore++;
 	if(this->tmpScore > this->currentScore){
 		unschedule(schedule_selector(StatusLayer::refreshScoreExecutor));
 	}
+}
+
+string StatusLayer::getMedalsName(int score){
+	//display the gold silver or bronze golden iron
+	string medalsName = "medals_0";
+	if(this->currentScore < 10){//iron medals
+		medalsName = "medals_0";
+	}else if(this->currentScore >= 10 && currentScore < 30){//bronze medals
+		medalsName = "medals_1";
+	}else if(currentScore >=30 && currentScore < 50){//silver medals
+		medalsName = "medals_2";
+	}else{//golden medals
+		medalsName = "medals_3";
+	}
+	return medalsName;
 }
 
 void StatusLayer::menuRestartCallback(Object* pSender){

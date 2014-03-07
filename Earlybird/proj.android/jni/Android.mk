@@ -21,6 +21,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/StatusLayer.cpp \
                    ../../Classes/WelcomeLayer.cpp \
                    ../../Classes/WelcomeScene.cpp \
+		   ../../Classes/UserRecord.cpp \
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 
