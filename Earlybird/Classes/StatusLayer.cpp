@@ -177,7 +177,7 @@ void StatusLayer::fadeInRestartBtn(){
 	this->addChild(tmpNode);
     
 	//fade in the two buttons
-	auto fadeIn = FadeIn::create(1);
+	auto fadeIn = FadeIn::create(0.1);
     //tmpNode->stopAllActions();
 	//tmpNode->runAction(fadeIn);
 
