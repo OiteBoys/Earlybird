@@ -70,4 +70,6 @@ private:
 
 	bool isNewRecord;
 
+	Point originPoint;
+	Size visibleSize;
 };
