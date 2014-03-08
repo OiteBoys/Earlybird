@@ -145,6 +145,19 @@ private:
      */
     void checkHit();
     
+	/**
+	 * Since the only global bird can not be addChilded to two layers
+	 * we must delete it from one layer,and then add it to another layer
+	 * Here we use the fadeout animation to delete it from the gamelayer, so when the player 
+	 * press the restart button, the bird can be added successfully
+	 */
+	void birdSpriteFadeOut();
+
+	 /*
+	 * After running the fadeout animation, delete the bird from current layer
+	 */
+	void birdSpriteRemove();
+
     PhysicsWorld *world;
 
     GameStatus gameStatus;

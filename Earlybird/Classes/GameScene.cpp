@@ -15,7 +15,6 @@ bool GameScene::init(){
 			this->addChild(backgroundLayer);
 		}
 
-		
 		auto statusLayer = StatusLayer::create();
 
 		// Add the main game layer

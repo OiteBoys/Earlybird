@@ -9,6 +9,7 @@ typedef enum{
 	ACTION_STATE_FLY,
 	ACTION_STATE_DIE
 } ActionState;
+const int BIRD_SPRITE_TAG = 10003;
 
 class BirdSprite : public Sprite {
 public:
@@ -23,11 +24,21 @@ public:
 	~BirdSprite();
 
 	/**
+	 * Get instance
+	 */
+	static BirdSprite* getInstance();
+
+	/**
 	* Cocos2d construct
 	*/
 	bool virtual init();
 
-	CREATE_FUNC(BirdSprite);
+	/**
+	 * create && init the bird
+	 */
+	bool createBird();
+
+	//CREATE_FUNC(BirdSprite);
 
 	/**
 	* The bird fly with swing, but do not effected by gravity.
@@ -57,6 +68,7 @@ protected:
     void createBirdByRandom();
 
 private:
+	static BirdSprite* shareBirdSprite;
 	/**
 	* This method change current status. called by fly and idle etc.
 	*/
@@ -75,4 +87,7 @@ private:
 
 	//the bird name format depends on the bird name we have rendom created before
 	string birdNameFormat;
+
+	//record the first time into the game.
+	unsigned int isFirstTime;
 };

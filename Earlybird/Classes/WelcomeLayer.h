@@ -35,4 +35,5 @@ private:
     
 	Sprite *land1;
 	Sprite *land2;
+	BirdSprite *bird;
 };

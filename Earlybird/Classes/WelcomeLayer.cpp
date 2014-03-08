@@ -44,10 +44,12 @@ bool WelcomeLayer::init(){
 	this->addChild(menu,1);
 
 	//create a bird and set the position in the center of the screen
-	auto bird = BirdSprite::create();
-	bird->setPosition(Point(origin.x + visiableSize.width / 2,origin.y + visiableSize.height*3/5 - 10));
-	bird->idle();
-	this->addChild(bird);
+	this->bird = BirdSprite::getInstance();
+	this->bird->createBird();
+	this->bird->setTag(BIRD_SPRITE_TAG);
+	this->bird->setPosition(Point(origin.x + visiableSize.width / 2,origin.y + visiableSize.height*3/5 - 10));
+	this->bird->idle();
+	this->addChild(this->bird);
 
 	// Add the land
 	this->land1 = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"));
@@ -87,6 +89,7 @@ void WelcomeLayer::scrollLand(float dt){
 
 void WelcomeLayer::menuStartCallback(Object *sender){
 	SimpleAudioEngine::getInstance()->playEffect("sfx_swooshing.ogg");
+	this->removeChildByTag(BIRD_SPRITE_TAG);
 	auto scene = GameScene::create();
 	TransitionScene *transition = TransitionFade::create(1, scene);
 	Director::getInstance()->replaceScene(transition);

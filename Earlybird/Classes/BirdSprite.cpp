@@ -5,12 +5,28 @@ BirdSprite::BirdSprite() {
 
 BirdSprite::~BirdSprite() {
 }
+BirdSprite* BirdSprite::shareBirdSprite = nullptr;
+BirdSprite* BirdSprite::getInstance(){
+	if(shareBirdSprite == NULL){
+		shareBirdSprite = new BirdSprite();
+		if(!shareBirdSprite->init()){
+			delete(shareBirdSprite);
+			shareBirdSprite = NULL;
+			CCLOG("ERROR: Could not init shareBirdSprite");
+		}
+	}
+	return shareBirdSprite;
+}
 
 bool BirdSprite::init() {
+	this->isFirstTime = 3;
+	return true;
+}
+
+bool BirdSprite::createBird(){
 	this->createBirdByRandom();
 	if(Sprite::initWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName(this->birdName))) {
 		// init idle status
-
 		//create the bird animation
 		Animation* animation = this->createAnimation(this->birdNameFormat.c_str(), 3, 10);
 		Animate* animate = Animate::create(animation);
@@ -64,8 +80,14 @@ bool BirdSprite::changeState(ActionState state) {
 }
 
 void BirdSprite::createBirdByRandom(){
+	if(this->isFirstTime & 1){
+		this->isFirstTime &= 2;
+	}else if(this->isFirstTime & 2){
+		this->isFirstTime &= 1;
+		return ;
+	}
 	srand((unsigned)time(NULL));
-	int type = (int)rand() % 3;
+	int type = ((int)rand())% 3;
 	switch (type)
 	{
 	case 0:

@@ -14,7 +14,8 @@ bool GameLayer::init(){
 		this->score = 0;
 
 		// Add the bird
-		this->bird = BirdSprite::create();
+		this->bird = BirdSprite::getInstance();
+		this->bird->createBird();
 		PhysicsBody *body = PhysicsBody::create();
         body->addShape(PhysicsShapeCircle::create(BIRD_RADIUS));
         body->setDynamic(true);
@@ -23,7 +24,7 @@ bool GameLayer::init(){
 		this->bird->setPhysicsBody(body);
 		this->bird->setPosition(origin.x + visiableSize.width*1/3 - 5,origin.y + visiableSize.height/2 + 5);
 		this->bird->idle();
-		this->addChild(bird);
+		this->addChild(this->bird);
         
         // Add the ground
         this->groundNode = Node::create();
@@ -181,5 +182,19 @@ void GameLayer::gameOver() {
 	SimpleAudioEngine::getInstance()->playEffect("sfx_die.ogg");
 	this->bird->die();
 	this->bird->setRotation(-90);
+	this->birdSpriteFadeOut();
 	this->gameStatus = GAME_STATUS_OVER;
+}
+
+void GameLayer::birdSpriteFadeOut(){
+	FadeOut* animation = FadeOut::create(2);
+	CallFunc* animationDone = CallFunc::create(bind(&GameLayer::birdSpriteRemove,this));
+	Sequence* sequence = Sequence::createWithTwoActions(animation,animationDone);
+	this->bird->stopAllActions();
+	this->bird->runAction(sequence);
+}
+
+void GameLayer::birdSpriteRemove(){
+	this->bird->setRotation(0);
+	this->removeChild(this->bird);
 }
