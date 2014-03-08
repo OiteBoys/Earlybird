@@ -31,7 +31,12 @@ Early Bird开发博客大纲
 
 游戏截图
 =================
-基本高仿游戏，去看原版就够了
+基本高仿游戏，素材均来自原版，版权归原作者所有，此仅供学习只用:)<br/>
+<img src="https://github.com/OiteBoys/Earlybird/blob/master/Earlybird/Resources/image/Screenshot_2014-03-08-15-04-15.png?raw=true" width="300" height="450"/><br/>
+<img src="https://github.com/OiteBoys/Earlybird/blob/master/Earlybird/Resources/image/Screenshot_2014-03-08-15-04-19.png?raw=true" width="300" height="450"/><br/>
+<img src="https://github.com/OiteBoys/Earlybird/blob/master/Earlybird/Resources/image/Screenshot_2014-03-08-15-04-23.png?raw=true" width="300" height="450"/><br/>
+<img src="https://github.com/OiteBoys/Earlybird/blob/master/Earlybird/Resources/image/Screenshot_2014-03-08-15-05-19.png?raw=true" width="300" height="450"/>
+
 
 游戏下载
 =================
