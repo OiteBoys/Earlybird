@@ -187,7 +187,7 @@ void GameLayer::gameOver() {
 }
 
 void GameLayer::birdSpriteFadeOut(){
-	FadeOut* animation = FadeOut::create(2);
+	FadeOut* animation = FadeOut::create(1.5);
 	CallFunc* animationDone = CallFunc::create(bind(&GameLayer::birdSpriteRemove,this));
 	Sequence* sequence = Sequence::createWithTwoActions(animation,animationDone);
 	this->bird->stopAllActions();
