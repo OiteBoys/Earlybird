@@ -63,6 +63,7 @@
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		5144753D18C8062900BC6ACD /* Number.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5144753B18C8062900BC6ACD /* Number.cpp */; };
+		5178157018CAD3EB00FD4FA2 /* UserRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5178156E18CAD3EB00FD4FA2 /* UserRecord.cpp */; };
 		51D52EBA18C2E07500E6D58C /* AtlasLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */; };
 		51D52EBB18C2E07500E6D58C /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */; };
 		51D52EBC18C2E07500E6D58C /* BirdSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51D52EA618C2E07500E6D58C /* BirdSprite.cpp */; };
@@ -305,6 +306,8 @@
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		5144753B18C8062900BC6ACD /* Number.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Number.cpp; path = ../Classes/Number.cpp; sourceTree = "<group>"; };
 		5144753C18C8062900BC6ACD /* Number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Number.h; path = ../Classes/Number.h; sourceTree = "<group>"; };
+		5178156E18CAD3EB00FD4FA2 /* UserRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UserRecord.cpp; path = ../Classes/UserRecord.cpp; sourceTree = "<group>"; };
+		5178156F18CAD3EB00FD4FA2 /* UserRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRecord.h; path = ../Classes/UserRecord.h; sourceTree = "<group>"; };
 		51D52EA218C2E07500E6D58C /* AtlasLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AtlasLoader.cpp; path = ../Classes/AtlasLoader.cpp; sourceTree = "<group>"; };
 		51D52EA318C2E07500E6D58C /* AtlasLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtlasLoader.h; path = ../Classes/AtlasLoader.h; sourceTree = "<group>"; };
 		51D52EA418C2E07500E6D58C /* BackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BackgroundLayer.cpp; path = ../Classes/BackgroundLayer.cpp; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				51D52EB318C2E07500E6D58C /* OptionLayer.h */,
 				51D52EB418C2E07500E6D58C /* StatusLayer.cpp */,
 				51D52EB518C2E07500E6D58C /* StatusLayer.h */,
+				5178156E18CAD3EB00FD4FA2 /* UserRecord.cpp */,
+				5178156F18CAD3EB00FD4FA2 /* UserRecord.h */,
 				51D52EB618C2E07500E6D58C /* WelcomeLayer.cpp */,
 				51D52EB718C2E07500E6D58C /* WelcomeLayer.h */,
 				51D52EB818C2E07500E6D58C /* WelcomeScene.cpp */,
@@ -812,6 +817,7 @@
 				51D52EC318C2E07500E6D58C /* StatusLayer.cpp in Sources */,
 				51D52EBE18C2E07500E6D58C /* GameScene.cpp in Sources */,
 				51D52EC018C2E07500E6D58C /* MenuScene.cpp in Sources */,
+				5178157018CAD3EB00FD4FA2 /* UserRecord.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				51D52ED918C3141B00E6D58C /* GameLayer.cpp in Sources */,
