@@ -33,6 +33,10 @@ Early Bird开发博客大纲
 =================
 基本高仿游戏，去看原版就够了
 
+游戏下载
+=================
+下载地址：<a href="http://pan.baidu.com/s/1GOaFc">点击下载</a>
+
 注意
 =================
 代码忽略了cocos2dx的库，你可以在cocos2dx官方下载的库直接拷贝到/Earlybird下下载地址：<a href="http://cdn.cocos2d-x.org/cocos2d-x-3.0beta2.zip">cocos2d-x-3.0beta2</a>
