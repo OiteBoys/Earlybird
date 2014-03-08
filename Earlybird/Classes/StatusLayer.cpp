@@ -224,15 +224,15 @@ void StatusLayer::blinkAction() {
 string StatusLayer::getMedalsName(int score){
 	this->setBlinkSprite();
 
-	//display the gold silver or bronze golden iron
+	//display the golden silver or bronze iron
 	string medalsName = "";
-	if(this->currentScore > 10){//iron medals
+	if(this->currentScore >= 10){//iron medals
 		medalsName = "medals_0";
 	}else if(this->currentScore >= 20 && currentScore < 30){//bronze medals
 		medalsName = "medals_1";
 	}else if(currentScore >=30 && currentScore < 50){//silver medals
 		medalsName = "medals_2";
-	}else if(currentScore >=50){//silver medals
+	}else if(currentScore >=50){//golden medals
 		medalsName = "medals_3";
 	}
 	return medalsName;

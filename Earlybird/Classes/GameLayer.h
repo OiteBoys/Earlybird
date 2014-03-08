@@ -52,7 +52,7 @@ const int PIP_DISTANCE = 100;
 /**
  * The distance between the pips vertical
  */
-const int PIP_INTERVAL = 190;
+const int PIP_INTERVAL = 180;
 
 /**
  * The number of pip pairs display in the screen in the same time
