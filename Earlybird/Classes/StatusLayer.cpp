@@ -226,7 +226,7 @@ string StatusLayer::getMedalsName(int score){
 
 	//display the golden silver or bronze iron
 	string medalsName = "";
-	if(this->currentScore >= 10){//iron medals
+	if(this->currentScore >=10 && this->currentScore < 20){//iron medals
 		medalsName = "medals_0";
 	}else if(this->currentScore >= 20 && currentScore < 30){//bronze medals
 		medalsName = "medals_1";
