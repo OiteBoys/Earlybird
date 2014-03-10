@@ -40,9 +40,9 @@ Early Bird开发博客大纲
 
 游戏下载
 =================
-下载地址：<a href="http://pan.baidu.com/s/1GOaFc">点击下载</a><br/>
+下载地址：<a href="http://pan.baidu.com/s/1pJsHfsf">点击下载</a><br/>
 二维码：<br/>
-![alt tag](https://github.com/OiteBoys/Earlybird/raw/65af4537b819319374c48eeab260c5f0bf3f6b46/Earlybird/Resources/image/Earlybird.png?raw=true)
+![alt tag](https://github.com/OiteBoys/Earlybird/blob/master/Earlybird/Resources/image/2143253421.png?raw=true)
 
 注意
 =================
