@@ -53,6 +53,10 @@ void AtlasLoader::loadAtlas(string filename, Texture2D *texture) {
 		data = data.substr(pos + 1);
 
 		// use the data to create a sprite frame
+        // fix 1px edge bug
+        if(atlas.name == string("land")) {
+            atlas.start.x += 1;
+        }
 		Rect rect = Rect(atlas.start.x, atlas.start.y, atlas.width, atlas.height);
 		auto frame = SpriteFrame::createWithTexture(texture, rect);
 		this->_spriteFrames.insert(string(atlas.name), frame);

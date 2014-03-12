@@ -55,12 +55,12 @@ bool WelcomeLayer::init(){
 	this->land1 = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"));
 	this->land1->setAnchorPoint(Point::ZERO);
 	this->land1->setPosition(Point::ZERO);
-	this->addChild(this->land1, 4);
+	this->addChild(this->land1);
 
 	this->land2 = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"));
 	this->land2->setAnchorPoint(Point::ZERO);
 	this->land2->setPosition(this->land1->getContentSize().width - 2.0f, 0);
-	this->addChild(this->land2, 0);
+	this->addChild(this->land2);
 
 	this->schedule(schedule_selector(WelcomeLayer::scrollLand), 0.01f);
 
@@ -78,12 +78,6 @@ void WelcomeLayer::scrollLand(float dt){
 
 	if(this->land2->getPositionX() == 0) {
 		this->land1->setPositionX(0);
-	}else if(this->land2->getPositionX() <= this->land1->getContentSize().width/2.0f){
-		// Avoid the black line bug
-		this->land2->setLocalZOrder(5);
-	}else if(this->land2->getPositionX() > this->land1->getContentSize().width/2.0f) {
-		// Avoid the black line bug
-		this->land2->setLocalZOrder(0);
 	}
 }
 

@@ -41,12 +41,12 @@ bool GameLayer::init(){
         this->landSpite1 = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"));
         this->landSpite1->setAnchorPoint(Point::ZERO);
         this->landSpite1->setPosition(Point::ZERO);
-        this->addChild(this->landSpite1,40);
+        this->addChild(this->landSpite1, 30);
         
         this->landSpite2 = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("land"));
         this->landSpite2->setAnchorPoint(Point::ZERO);
         this->landSpite2->setPosition(this->landSpite1->getContentSize().width-2.0f,0);
-        this->addChild(this->landSpite2,30);
+        this->addChild(this->landSpite2, 30);
         
 		shiftLand = schedule_selector(GameLayer::scrollLand);
         this->schedule(shiftLand, 0.01f);
@@ -73,12 +73,6 @@ void GameLayer::scrollLand(float dt){
 	this->landSpite2->setPositionX(this->landSpite1->getPositionX() + this->landSpite1->getContentSize().width - 2.0f);
 	if(this->landSpite2->getPositionX() == 0) {
 		this->landSpite1->setPositionX(0);
-	}else if(this->landSpite2->getPositionX() <= this->landSpite1->getContentSize().width/2.0f){
-		// Avoid the black line bug
-		this->landSpite2->setLocalZOrder(50);
-	}else if(this->landSpite2->getPositionX() > this->landSpite1->getContentSize().width/2.0f) {
-		// Avoid the black line bug
-		this->landSpite2->setLocalZOrder(30);
 	}
     
     // move the pips
