@@ -13,7 +13,7 @@ Earlybird
 Early Bird开发博客大纲
 =================
 
-1.	就这么开始--开发环境的搭建素材的准备，以及素材精灵读取类AtlasLoader的设计。
+1.	<a href="http://blog.csdn.net/kantian_/article/details/21161299" target="_blank">就这么开始--开发环境的搭建素材的准备，以及素材精灵读取类AtlasLoader的设计。</a>
 2.	未雨绸缪—Loading界面的写法
 3.	玄关是必要的—游戏欢迎界面的创建，以及Menu的简单应用
 4.	英雄都是孤独的？--小鸟单例类的设计以及小鸟类的设计
