@@ -16,8 +16,8 @@ Early Bird开发博客大纲
 1.	<a href="http://blog.csdn.net/kantian_/article/details/21161299" target="_blank">就这么开始--开发环境的搭建素材的准备，以及素材精灵读取类AtlasLoader的设计。</a>
 2.	<a href="http://blog.csdn.net/kantian_/article/details/21184609" target="_blank">未雨绸缪—Loading界面的写法</a>
 3.	<a href="http://blog.csdn.net/kantian_/article/details/21226239" target="_blank">玄关是必要的—游戏欢迎界面的创建，以及Menu的简单应用</a>
-4.	英雄都是孤独的？--小鸟单例类的设计以及小鸟类的设计
-5.	千层饼的智慧—谈谈游戏主场景的分层以及最简单的背景层的实现
+4.	<a href="http://blog.csdn.net/kantian_/article/details/21511483" target="_blank">英雄都是孤独的？--小鸟单例类的设计以及小鸟类的设计</a>
+5.	<a href="http://blog.csdn.net/kantian_/article/details/21512221">千层饼的智慧—谈谈游戏主场景的分层以及最简单的背景层的实现</a>
 6.	SM？控制和被控制的欲望—游戏控制层的设计以及控制层和游戏层的关系
 7.	终于要来正戏了—游戏层的设计和小鸟的加入
 8.	物理世界的美妙—游戏层的物理属性的设置
