@@ -17,17 +17,17 @@ Early Bird开发博客大纲
 2.	<a href="http://blog.csdn.net/kantian_/article/details/21184609" target="_blank">未雨绸缪—Loading界面的写法</a>
 3.	<a href="http://blog.csdn.net/kantian_/article/details/21226239" target="_blank">玄关是必要的—游戏欢迎界面的创建，以及Menu的简单应用</a>
 4.	<a href="http://blog.csdn.net/kantian_/article/details/21511483" target="_blank">英雄都是孤独的？--小鸟单例类的设计以及小鸟类的设计</a>
-5.	<a href="http://blog.csdn.net/kantian_/article/details/21512221">千层饼的智慧—谈谈游戏主场景的分层以及最简单的背景层的实现</a>
-6.	SM？控制和被控制的欲望—游戏控制层的设计以及控制层和游戏层的关系
-7.	终于要来正戏了—游戏层的设计和小鸟的加入
-8.	物理世界的美妙—游戏层的物理属性的设置
-9.	让马里奥大叔来搬水管—在游戏层加入水管
-10.	对不起，我的数学老师是体育老师兼职的—游戏中所用到的数字类封装
-11.	布告栏中的玄机—游戏状态层的设计与实现
-12.	我才不会告诉你我硬盘的秘密呢—游戏存储和金币闪光实现
-13.	就要结束了吗—Android交叉编译以及后继
+5.	<a href="http://blog.csdn.net/kantian_/article/details/21512221" target="_blank">千层饼的智慧—谈谈游戏主场景的分层以及最简单的背景层的实现</a>
+6.	<a href="http://blog.csdn.net/kantian_/article/details/21592941" target="_blank">SM？控制和被控制的欲望—游戏控制层的设计以及控制层和游戏层的关系</a>
+7.	<a href="http://blog.csdn.net/kantian_/article/details/21608891" target="_blank">终于要来正戏了—游戏层的设计和小鸟的加入</a>
+8.	<a href="http://blog.csdn.net/kantian_/article/details/21648647" target="_blank">物理世界的美妙—游戏层的物理属性的设置</a>
+9.	<a href="http://blog.csdn.net/kantian_/article/details/21699457" target="_blank">让马里奥大叔来搬水管—在游戏层加入水管</a>
+10.	<a href="http://blog.csdn.net/kantian_/article/details/21699893" target="_blank">对不起，我的数学老师是体育老师兼职的—游戏中所用到的数字类封装</a>
+11.	<a href="http://blog.csdn.net/kantian_/article/details/21778899" target="_blank">布告栏中的玄机—游戏状态层的设计与实现</a>
+12.	<a href="http://blog.csdn.net/kantian_/article/details/21779199" target="_blank">我才不会告诉你我硬盘的秘密呢—游戏存储</a>
+13.	<a href="http://blog.csdn.net/kantian_/article/details/21821887" target="_blank">一闪一闪亮晶晶—游戏金币闪烁效果实现</a>
+14.	<a href="http://blog.csdn.net/kantian_/article/details/21822437" target="_blank">就要结束了吗—Android交叉编译以及后继</a>
 
-<p style='color:red'>博客还在建设中，我们会在博客一篇完成是同步加上博客链接，预计在一周左右会全部完成</p>
 
 游戏截图
 =================
