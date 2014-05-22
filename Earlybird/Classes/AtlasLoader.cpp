@@ -40,7 +40,7 @@ void AtlasLoader::loadAtlas(string filename, Texture2D *texture) {
 	string line = data.substr(0, pos);
 	data = data.substr(pos + 1);
 	while(line != ""){
-		sscanf(line.c_str(), "%s %d %d %f %f %f %f %f", 
+		sscanf(line.c_str(), "%s %d %d %f %f %f %f", 
 		atlas.name, &atlas.width, &atlas.height, &atlas.start.x, 
 		&atlas.start.y, &atlas.end.x, &atlas.end.y);
 		atlas.start.x = 1024*atlas.start.x;
