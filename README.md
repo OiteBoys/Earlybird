@@ -4,6 +4,7 @@ Earlybird
   <li><b>语言：</b>C++</li>
   <li><b>开发平台：</b>VS2012  windows</li>
   <li><b>引擎：</b>cocos2dx3.0 beta2</li>
+  <li><b style='color:#A90329'>已增加git分支v3.1，里面是在最新的cocos2dx3.1版本上能正常运行的版本，时间仓促，目前只在mac上的xcode中运行测试过，Android和window上还请自己把原文件加上运行，cocos2d的库也请自己加上，随便哪个工程里面把整个cocos2d的文件夹整个拷贝过来就行了，只要版本对得上就没问题。</b></li>
 </ul>
 
 <p>小鸟的头撞水管上了，我的头撞键盘上了。对不起言归正传，这里是我和我的同伴所组建的游戏个人游戏开发小组OiteBoys为了学习游戏制作和cocos2d-x而仿制的flappy bird cocos2d-x 3.0beta2版的C++源代码。</p>
