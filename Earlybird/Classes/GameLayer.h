@@ -76,6 +76,12 @@ typedef enum _game_status {
 	GAME_STATUS_OVER
 } GameStatus;
 
+typedef enum : uint8_t {
+    ColliderTypeBird        = 0x1,
+    ColliderTypeLand        = 0x1<<1,
+    ColliderTypePip         = 0x1<<2
+} ColliderType;
+
 class StatusDelegate {
 public:
 	/**
@@ -176,7 +182,7 @@ private:
     
 	void scrollLand(float dt);
 
-	bool onContactBegin(EventCustom *event, const PhysicsContact& contact);
+	bool onContactBegin(PhysicsContact& contact);
 
 	void gameOver();
 };

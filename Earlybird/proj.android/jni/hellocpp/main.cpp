@@ -1,6 +1,5 @@
 #include "AppDelegate.h"
 #include "cocos2d.h"
-#include "CCEventType.h"
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
 #include <android/log.h>
@@ -10,7 +9,7 @@
 
 using namespace cocos2d;
 
-void cocos_android_app_init (struct android_app* app) {
+void cocos_android_app_init (JNIEnv* env, jobject thiz) {
     LOGD("cocos_android_app_init");
     AppDelegate *pAppDelegate = new AppDelegate();
 }

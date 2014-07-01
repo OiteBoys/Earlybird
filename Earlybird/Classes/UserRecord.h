@@ -4,7 +4,7 @@
 using namespace std;
 using namespace cocos2d;
 
-class UserRecord : public Object
+class UserRecord : public Ref
 {
 public:
 	UserRecord();

@@ -26,7 +26,7 @@ private:
 	/**
      * The start button has been pressed will call this function
      */
-	void menuStartCallback(Object *sender);
+	void menuStartCallback(Ref *sender);
     
 	/**
      * This method is make the land have a scroll animation

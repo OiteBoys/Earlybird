@@ -17,7 +17,7 @@ typedef enum _gravity {
 */
 const int NumberInterval = 4;
 
-class NumberSeries : public Object{
+class NumberSeries : public Ref{
 public:
     NumberSeries();
     

@@ -2,6 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+using namespace cocos2d;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -13,7 +14,7 @@ public:
     virtual bool init();  
     
     // a selector callback
-    void menuCloseCallback(Object* pSender);
+    void menuCloseCallback(Ref* pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);

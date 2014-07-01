@@ -18,6 +18,9 @@ bool GameLayer::init(){
 		this->bird->createBird();
 		PhysicsBody *body = PhysicsBody::create();
         body->addShape(PhysicsShapeCircle::create(BIRD_RADIUS));
+        body->setCategoryBitmask(ColliderTypeBird);
+        body->setCollisionBitmask(ColliderTypeLand & ColliderTypePip);
+        body->setContactTestBitmask(ColliderTypePip);
         body->setDynamic(true);
 		body->setLinearDamping(0.0f);
 		body->setGravityEnable(false);
@@ -33,6 +36,9 @@ bool GameLayer::init(){
         groundBody->addShape(PhysicsShapeBox::create(Size(288, landHeight)));
         groundBody->setDynamic(false);
         groundBody->setLinearDamping(0.0f);
+        groundBody->setCategoryBitmask(ColliderTypeLand);
+        groundBody->setCollisionBitmask(ColliderTypeBird);
+        groundBody->setContactTestBitmask(ColliderTypeBird);
         this->groundNode->setPhysicsBody(groundBody);
         this->groundNode->setPosition(144, landHeight/2);
         this->addChild(this->groundNode);
@@ -54,7 +60,7 @@ bool GameLayer::init(){
         this->scheduleUpdate();
 
 		auto contactListener = EventListenerPhysicsContact::create();
-		contactListener->onContactBegin = CC_CALLBACK_2(GameLayer::onContactBegin, this);
+		contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
 		this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 		
 		return true;
@@ -63,7 +69,7 @@ bool GameLayer::init(){
 	}
 }
 
-bool GameLayer::onContactBegin(EventCustom *event, const PhysicsContact& contact) {
+bool GameLayer::onContactBegin(PhysicsContact& contact) {
 	this->gameOver();
 	return true;
 }
@@ -105,7 +111,7 @@ void GameLayer::onTouch() {
 
 void GameLayer::rotateBird() {
     float verticalSpeed = this->bird->getPhysicsBody()->getVelocity().y;
-    this->bird->setRotation(min(max(-90, (verticalSpeed*0.2 + 60)), 30));
+    this->bird->setRotation(- min(max(-90, (verticalSpeed*0.2 + 60)), 30));
 }
 
 
@@ -134,6 +140,9 @@ void GameLayer::createPips() {
 		body->addShape(shapeBoxDown);
 		body->addShape(PhysicsShapeBox::create(pipUp->getContentSize()));
 		body->setDynamic(false);
+        body->setCategoryBitmask(ColliderTypePip);
+        body->setCollisionBitmask(ColliderTypeBird);
+        body->setContactTestBitmask(ColliderTypeBird);
 		singlePip->setPhysicsBody(body);
         singlePip->setTag(PIP_NEW);
         
