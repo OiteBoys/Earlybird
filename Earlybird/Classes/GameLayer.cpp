@@ -20,7 +20,7 @@ bool GameLayer::init(){
         body->addShape(PhysicsShapeCircle::create(BIRD_RADIUS));
         body->setCategoryBitmask(ColliderTypeBird);
         body->setCollisionBitmask(ColliderTypeLand & ColliderTypePip);
-        body->setContactTestBitmask(ColliderTypePip);
+        body->setContactTestBitmask(ColliderTypeLand | ColliderTypePip);
         body->setDynamic(true);
 		body->setLinearDamping(0.0f);
 		body->setGravityEnable(false);
