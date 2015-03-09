@@ -2,7 +2,7 @@
 
 #include "AtlasLoader.h"
 #include "SimpleAudioEngine.h"
-#include "CCMenuItem.h"
+//#include "CCMenuItem.h"
 #include "GameScene.h"
 #include "time.h"
 #include "cocos2d.h"
