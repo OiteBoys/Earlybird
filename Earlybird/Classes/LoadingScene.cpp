@@ -13,18 +13,18 @@ bool LoadingScene::init() {
 
 void LoadingScene::onEnter(){
 	// add background to current scene
-	Sprite *background = Sprite::create("splash.png");
+	Sprite *background = Sprite::create("image/splash.png");
 	Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 	background->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
 	this->addChild(background);
 
 	// start ansyc method load the atlas.png
-	Director::getInstance()->getTextureCache()->addImageAsync("atlas.png", CC_CALLBACK_1(LoadingScene::loadingCallBack, this));
+	Director::getInstance()->getTextureCache()->addImageAsync("image/atlas.png", CC_CALLBACK_1(LoadingScene::loadingCallBack, this));
 }
 
 void LoadingScene::loadingCallBack(Texture2D *texture){
-	AtlasLoader::getInstance()->loadAtlas("atlas.txt", texture);
+	AtlasLoader::getInstance()->loadAtlas("image/atlas.txt", texture);
 
 	// After loading the texture , preload all the sound
 	SimpleAudioEngine::getInstance()->preloadEffect("sfx_die.ogg");

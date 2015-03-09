@@ -29,7 +29,7 @@ bool AtlasLoader::init(){
 }
 
 void AtlasLoader::loadAtlas(string filename){
-	auto textureAtlas = Director::getInstance()->getTextureCache()->addImage("atlas.png");
+	auto textureAtlas = Director::getInstance()->getTextureCache()->addImage("image/atlas.png");
 	this->loadAtlas(filename, textureAtlas);
 }
 
