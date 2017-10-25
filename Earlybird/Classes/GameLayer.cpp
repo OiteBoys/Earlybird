@@ -21,6 +21,7 @@ bool GameLayer::init(){
         body->setDynamic(true);
 		body->setLinearDamping(0.0f);
 		body->setGravityEnable(false);
+		body->setContactTestBitmask(true);
 		this->bird->setPhysicsBody(body);
 		this->bird->setPosition(origin.x + visiableSize.width*1/3 - 5,origin.y + visiableSize.height/2 + 5);
 		this->bird->idle();
@@ -54,7 +55,7 @@ bool GameLayer::init(){
         this->scheduleUpdate();
 
 		auto contactListener = EventListenerPhysicsContact::create();
-		contactListener->onContactBegin = CC_CALLBACK_2(GameLayer::onContactBegin, this);
+		contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
 		this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 		
 		return true;
@@ -63,7 +64,7 @@ bool GameLayer::init(){
 	}
 }
 
-bool GameLayer::onContactBegin(EventCustom *event, const PhysicsContact& contact) {
+bool GameLayer::onContactBegin(const PhysicsContact &contact) {
 	this->gameOver();
 	return true;
 }
@@ -134,9 +135,10 @@ void GameLayer::createPips() {
 		body->addShape(shapeBoxDown);
 		body->addShape(PhysicsShapeBox::create(pipUp->getContentSize()));
 		body->setDynamic(false);
+		body->setContactTestBitmask(true);
 		singlePip->setPhysicsBody(body);
         singlePip->setTag(PIP_NEW);
-        
+
         this->addChild(singlePip);
         this->pips.push_back(singlePip);
     }
